@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PcHelpenatorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cases">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CASEName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CASESize" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CASELooks" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CASEPrice" Type="int" Nullable="false" />
+          <Property Name="CASERating" Type="int" Nullable="false" />
+          <Property Name="CASEImage" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CPUs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CPUName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CPUSocketType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CPUHeatsink" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CPUWatts" Type="int" Nullable="false" />
+          <Property Name="CPUPrice" Type="int" Nullable="false" />
+          <Property Name="CPURating" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GPUs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GPUName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GPUBrand" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GPUWatts" Type="int" Nullable="false" />
+          <Property Name="GPUPrice" Type="int" Nullable="false" />
+          <Property Name="GPURating" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HEATSINKs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HEATSINKName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HEATSINKSocket" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HEATSINKPrice" Type="int" Nullable="false" />
+          <Property Name="HEATSINKRating" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MOTHERBOARDs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MOTHERBOARDName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MOTHERBOARDSize" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MOTHERBOARDSocke" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MOTHERBOARDRam" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MOTHERBOARDMaxRam" Type="int" Nullable="false" />
+          <Property Name="MOTHERBOARDPrice" Type="int" Nullable="false" />
+          <Property Name="MOTHERBOARDRating" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OPTIONALs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OPTIONALType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Property1" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="OPTIONALPrice" Type="int" Nullable="false" />
+          <Property Name="OPTIONALRating" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POWERSUPPLies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="POWERSUPPLYWatts" Type="int" Nullable="false" />
+          <Property Name="POWERSUPPLYBrand" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="POWERSUPPLYPrice" Type="int" Nullable="false" />
+          <Property Name="POWERSUPPLYRating" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RAMs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RAMType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RAMSpeed" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RAMSize" Type="int" Nullable="false" />
+          <Property Name="RAMPrice" Type="int" Nullable="false" />
+          <Property Name="RAMRating" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STORAGEs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STORAGEType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="STORAGESize" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="STORAGEPrice" Type="int" Nullable="false" />
+          <Property Name="STORAGERating" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="PcHelpenatorModelStoreContainer">
+          <EntitySet Name="Cases" EntityType="Self.Cases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CPUs" EntityType="Self.CPUs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GPUs" EntityType="Self.GPUs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HEATSINKs" EntityType="Self.HEATSINKs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MOTHERBOARDs" EntityType="Self.MOTHERBOARDs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OPTIONALs" EntityType="Self.OPTIONALs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POWERSUPPLies" EntityType="Self.POWERSUPPLies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RAMs" EntityType="Self.RAMs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STORAGEs" EntityType="Self.STORAGEs" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PcHelpenatorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Case">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CASEName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CASESize" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CASELooks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CASEPrice" Type="Int32" Nullable="false" />
+          <Property Name="CASERating" Type="Int32" Nullable="false" />
+          <Property Name="CASEImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CPU">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CPUName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CPUSocketType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CPUHeatsink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CPUWatts" Type="Int32" Nullable="false" />
+          <Property Name="CPUPrice" Type="Int32" Nullable="false" />
+          <Property Name="CPURating" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GPU">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GPUName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GPUBrand" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GPUWatts" Type="Int32" Nullable="false" />
+          <Property Name="GPUPrice" Type="Int32" Nullable="false" />
+          <Property Name="GPURating" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HEATSINK">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HEATSINKName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HEATSINKSocket" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HEATSINKPrice" Type="Int32" Nullable="false" />
+          <Property Name="HEATSINKRating" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MOTHERBOARD">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MOTHERBOARDName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MOTHERBOARDSize" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MOTHERBOARDSocke" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MOTHERBOARDRam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MOTHERBOARDMaxRam" Type="Int32" Nullable="false" />
+          <Property Name="MOTHERBOARDPrice" Type="Int32" Nullable="false" />
+          <Property Name="MOTHERBOARDRating" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OPTIONAL">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OPTIONALType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Property1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OPTIONALPrice" Type="Int32" Nullable="false" />
+          <Property Name="OPTIONALRating" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POWERSUPPLy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="POWERSUPPLYWatts" Type="Int32" Nullable="false" />
+          <Property Name="POWERSUPPLYBrand" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="POWERSUPPLYPrice" Type="Int32" Nullable="false" />
+          <Property Name="POWERSUPPLYRating" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RAM">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RAMType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RAMSpeed" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RAMSize" Type="Int32" Nullable="false" />
+          <Property Name="RAMPrice" Type="Int32" Nullable="false" />
+          <Property Name="RAMRating" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STORAGE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STORAGEType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="STORAGESize" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="STORAGEPrice" Type="Int32" Nullable="false" />
+          <Property Name="STORAGERating" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="PcHelpenatorEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cases" EntityType="Self.Case" />
+          <EntitySet Name="CPUs" EntityType="Self.CPU" />
+          <EntitySet Name="GPUs" EntityType="Self.GPU" />
+          <EntitySet Name="HEATSINKs" EntityType="Self.HEATSINK" />
+          <EntitySet Name="MOTHERBOARDs" EntityType="Self.MOTHERBOARD" />
+          <EntitySet Name="OPTIONALs" EntityType="Self.OPTIONAL" />
+          <EntitySet Name="POWERSUPPLies" EntityType="Self.POWERSUPPLy" />
+          <EntitySet Name="RAMs" EntityType="Self.RAM" />
+          <EntitySet Name="STORAGEs" EntityType="Self.STORAGE" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PcHelpenatorModelStoreContainer" CdmEntityContainer="PcHelpenatorEntities">
+          <EntitySetMapping Name="Cases">
+            <EntityTypeMapping TypeName="PcHelpenatorModel.Case">
+              <MappingFragment StoreEntitySet="Cases">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CASEName" ColumnName="CASEName" />
+                <ScalarProperty Name="CASESize" ColumnName="CASESize" />
+                <ScalarProperty Name="CASELooks" ColumnName="CASELooks" />
+                <ScalarProperty Name="CASEPrice" ColumnName="CASEPrice" />
+                <ScalarProperty Name="CASERating" ColumnName="CASERating" />
+                <ScalarProperty Name="CASEImage" ColumnName="CASEImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CPUs">
+            <EntityTypeMapping TypeName="PcHelpenatorModel.CPU">
+              <MappingFragment StoreEntitySet="CPUs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CPUName" ColumnName="CPUName" />
+                <ScalarProperty Name="CPUSocketType" ColumnName="CPUSocketType" />
+                <ScalarProperty Name="CPUHeatsink" ColumnName="CPUHeatsink" />
+                <ScalarProperty Name="CPUWatts" ColumnName="CPUWatts" />
+                <ScalarProperty Name="CPUPrice" ColumnName="CPUPrice" />
+                <ScalarProperty Name="CPURating" ColumnName="CPURating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPUs">
+            <EntityTypeMapping TypeName="PcHelpenatorModel.GPU">
+              <MappingFragment StoreEntitySet="GPUs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GPUName" ColumnName="GPUName" />
+                <ScalarProperty Name="GPUBrand" ColumnName="GPUBrand" />
+                <ScalarProperty Name="GPUWatts" ColumnName="GPUWatts" />
+                <ScalarProperty Name="GPUPrice" ColumnName="GPUPrice" />
+                <ScalarProperty Name="GPURating" ColumnName="GPURating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HEATSINKs">
+            <EntityTypeMapping TypeName="PcHelpenatorModel.HEATSINK">
+              <MappingFragment StoreEntitySet="HEATSINKs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="HEATSINKName" ColumnName="HEATSINKName" />
+                <ScalarProperty Name="HEATSINKSocket" ColumnName="HEATSINKSocket" />
+                <ScalarProperty Name="HEATSINKPrice" ColumnName="HEATSINKPrice" />
+                <ScalarProperty Name="HEATSINKRating" ColumnName="HEATSINKRating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MOTHERBOARDs">
+            <EntityTypeMapping TypeName="PcHelpenatorModel.MOTHERBOARD">
+              <MappingFragment StoreEntitySet="MOTHERBOARDs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MOTHERBOARDName" ColumnName="MOTHERBOARDName" />
+                <ScalarProperty Name="MOTHERBOARDSize" ColumnName="MOTHERBOARDSize" />
+                <ScalarProperty Name="MOTHERBOARDSocke" ColumnName="MOTHERBOARDSocke" />
+                <ScalarProperty Name="MOTHERBOARDRam" ColumnName="MOTHERBOARDRam" />
+                <ScalarProperty Name="MOTHERBOARDMaxRam" ColumnName="MOTHERBOARDMaxRam" />
+                <ScalarProperty Name="MOTHERBOARDPrice" ColumnName="MOTHERBOARDPrice" />
+                <ScalarProperty Name="MOTHERBOARDRating" ColumnName="MOTHERBOARDRating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OPTIONALs">
+            <EntityTypeMapping TypeName="PcHelpenatorModel.OPTIONAL">
+              <MappingFragment StoreEntitySet="OPTIONALs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OPTIONALType" ColumnName="OPTIONALType" />
+                <ScalarProperty Name="Property1" ColumnName="Property1" />
+                <ScalarProperty Name="OPTIONALPrice" ColumnName="OPTIONALPrice" />
+                <ScalarProperty Name="OPTIONALRating" ColumnName="OPTIONALRating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POWERSUPPLies">
+            <EntityTypeMapping TypeName="PcHelpenatorModel.POWERSUPPLy">
+              <MappingFragment StoreEntitySet="POWERSUPPLies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="POWERSUPPLYWatts" ColumnName="POWERSUPPLYWatts" />
+                <ScalarProperty Name="POWERSUPPLYBrand" ColumnName="POWERSUPPLYBrand" />
+                <ScalarProperty Name="POWERSUPPLYPrice" ColumnName="POWERSUPPLYPrice" />
+                <ScalarProperty Name="POWERSUPPLYRating" ColumnName="POWERSUPPLYRating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RAMs">
+            <EntityTypeMapping TypeName="PcHelpenatorModel.RAM">
+              <MappingFragment StoreEntitySet="RAMs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RAMType" ColumnName="RAMType" />
+                <ScalarProperty Name="RAMSpeed" ColumnName="RAMSpeed" />
+                <ScalarProperty Name="RAMSize" ColumnName="RAMSize" />
+                <ScalarProperty Name="RAMPrice" ColumnName="RAMPrice" />
+                <ScalarProperty Name="RAMRating" ColumnName="RAMRating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STORAGEs">
+            <EntityTypeMapping TypeName="PcHelpenatorModel.STORAGE">
+              <MappingFragment StoreEntitySet="STORAGEs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="STORAGEType" ColumnName="STORAGEType" />
+                <ScalarProperty Name="STORAGESize" ColumnName="STORAGESize" />
+                <ScalarProperty Name="STORAGEPrice" ColumnName="STORAGEPrice" />
+                <ScalarProperty Name="STORAGERating" ColumnName="STORAGERating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

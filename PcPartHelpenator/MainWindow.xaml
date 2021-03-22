@@ -1,0 +1,74 @@
+﻿<Window x:Class="PcPartHelpenator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PcPartHelpenator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <TabControl TabStripPlacement="Top">
+        <TabItem Name="PcMaker" Header="The HELPENATOR" Width="125">
+            <Grid Margin="0,-47,0,-3">
+                <ComboBox x:Name="CPU_DROP" HorizontalAlignment="Left" Margin="70,112,0,0" VerticalAlignment="Top" Width="146" Height="31"/>
+                <TextBlock HorizontalAlignment="Left" Margin="170,58,0,0" TextWrapping="Wrap" Text="B1ADEEE`s PC HELPENATOR" VerticalAlignment="Top" FontSize="20" FontFamily="Unispace"/>
+                <TextBlock HorizontalAlignment="Left" Margin="52,87,0,0" TextWrapping="Wrap" Text="1. CPU" VerticalAlignment="Top" FontSize="14"/>
+                <ComboBox x:Name="GPU_DROP" HorizontalAlignment="Left" Margin="70,169,0,0" VerticalAlignment="Top" Width="146" Height="35"/>
+                <ComboBox x:Name="Heatsink_DROP" HorizontalAlignment="Left" Margin="70,293,0,0" VerticalAlignment="Top" Width="146" Height="32"/>
+                <ComboBox x:Name="RAM_DROP" HorizontalAlignment="Left" Margin="70,355,0,0" VerticalAlignment="Top" Width="146" Height="33"/>
+                <ComboBox x:Name="Storage1_DROP" HorizontalAlignment="Left" Margin="295,138,0,0" VerticalAlignment="Top" Width="135" Height="35"/>
+                <ComboBox x:Name="Storage2_DROP" HorizontalAlignment="Left" Margin="295,178,0,0" VerticalAlignment="Top" Width="135" Height="33"/>
+                <ComboBox x:Name="Storage3_DROP" HorizontalAlignment="Left" Margin="295,216,0,0" VerticalAlignment="Top" Width="135" RenderTransformOrigin="-0.841,0.52" Height="32"/>
+                <ComboBox x:Name="PSU_DROP" HorizontalAlignment="Left" Margin="295,302,0,0" VerticalAlignment="Top" Width="135" Height="33"/>
+                <ComboBox x:Name="CaseRGB_DROP" HorizontalAlignment="Left" Margin="520,117,0,0" VerticalAlignment="Top" Width="140" Height="31"/>
+                <ComboBox x:Name="CaseStealth_DROP" HorizontalAlignment="Left" Margin="520,168,0,0" VerticalAlignment="Top" Width="140" Height="31"/>
+                <ComboBox x:Name="Airflow_DROP" HorizontalAlignment="Left" Margin="520,217,0,0" VerticalAlignment="Top" Width="140" Height="32"/>
+                <ComboBox x:Name="OptionalFans_DROP" HorizontalAlignment="Left" Margin="520,302,0,0" VerticalAlignment="Top" Width="140" Height="32"/>
+                <ComboBox x:Name="OptionalLED_DROP" HorizontalAlignment="Left" Margin="520,355,0,0" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.437,0.393" Height="33"/>
+                <ComboBox x:Name="MOBO_DROP" HorizontalAlignment="Left" Margin="70,230,0,0" VerticalAlignment="Top" Width="146" Height="32"/>
+                <TextBlock HorizontalAlignment="Left" Margin="52,147,0,0" TextWrapping="Wrap" Text="2. GPU" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.55,2.144"/>
+                <TextBlock HorizontalAlignment="Left" Margin="52,331,0,0" TextWrapping="Wrap" Text="5. RAM" VerticalAlignment="Top" FontSize="14"/>
+                <TextBlock HorizontalAlignment="Left" Margin="52,270,0,0" TextWrapping="Wrap" Text="4. HeatSink (CPU COOLER)" VerticalAlignment="Top" FontSize="14"/>
+                <TextBlock HorizontalAlignment="Left" Margin="52,208,0,0" TextWrapping="Wrap" Text="3. Motherboard" VerticalAlignment="Top" FontSize="14"/>
+                <TextBlock HorizontalAlignment="Left" Margin="278,113,0,0" TextWrapping="Wrap" Text="6. Storage" VerticalAlignment="Top" FontSize="14"/>
+                <TextBlock HorizontalAlignment="Left" Margin="282,160,0,0" TextWrapping="Wrap" Text="1." VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Left" Margin="282,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="2"/><Run Text="."/></TextBlock>
+                <TextBlock HorizontalAlignment="Left" Margin="282,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="3."/>
+                <TextBlock HorizontalAlignment="Left" Margin="278,278,0,0" TextWrapping="Wrap" Text="7. Power Supply" VerticalAlignment="Top" FontSize="14"/>
+                <TextBlock HorizontalAlignment="Left" Margin="491,77,0,0" TextWrapping="Wrap" Text="8. Case" VerticalAlignment="Top" FontSize="14"/>
+                <TextBlock HorizontalAlignment="Left" Margin="510,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="RGB:"/>
+                <TextBlock HorizontalAlignment="Left" Margin="510,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Stealth:"/>
+                <TextBlock HorizontalAlignment="Left" Margin="510,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Airflow:"/>
+                <TextBlock HorizontalAlignment="Left" Margin="492,259,0,0" TextWrapping="Wrap" Text="9. OPTIONAL" VerticalAlignment="Top" FontSize="14"/>
+                <TextBlock HorizontalAlignment="Left" Margin="510,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Fans:"/>
+                <TextBlock HorizontalAlignment="Left" Margin="510,338,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="LED Strips:"/>
+                <TextBlock HorizontalAlignment="Left" Margin="290,255,0,0" TextWrapping="Wrap" Text="(Storage No.1 Contains Operating System)" VerticalAlignment="Top" FontSize="8"/>
+            </Grid>
+        </TabItem>
+        <TabItem Name="ThePC" Header="The FINISHED PC" Width="125">
+            <Grid Margin="0,2,0,-2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <TextBlock HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Margin="10" TextWrapping="Wrap" Text="MAXIMUIM PRICE:" VerticalAlignment="Top" FontSize="16" Width="151" Foreground="#FF0B00F7" FontFamily="Unispace"/>
+                <TextBlock HorizontalAlignment="Center" Grid.Row="5" Grid.Column="1" Margin="10" TextWrapping="Wrap" Text="BUILD RATING:" VerticalAlignment="Top" FontSize="16" Width="130" Foreground="#FF0B00F7" FontFamily="Unispace"/>
+                <TextBlock HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1" Margin="10" TextWrapping="Wrap" Text="€" VerticalAlignment="Top" FontSize="18" Width="184" Foreground="#FF0B00F7" FontFamily="Unispace"/>
+                <TextBlock x:Name="MaxPriceTBLK" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" Margin="10" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" Width="184" Foreground="#FF0B00F7" FontFamily="Unispace"/>
+                <TextBlock x:Name="RecPriceTBLK" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1" Margin="10" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" Width="184" Foreground="#FF0B00F7" FontFamily="Unispace"/>
+                <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" Margin="10" TextWrapping="Wrap" Text="€" VerticalAlignment="Top" FontSize="18" Width="184" Foreground="#FF0B00F7" FontFamily="Unispace"/>
+                <TextBlock HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1" Margin="10" TextWrapping="Wrap" Text="RECOMMENDED PRICE:" VerticalAlignment="Top" FontSize="16" Width="184" Foreground="#FF0B00F7" FontFamily="Unispace"/>
+                <ListBox x:Name="PCImageLBX" Grid.Column="0" Grid.RowSpan="5" HorizontalAlignment="Center" VerticalAlignment="Top" Height="300" Margin="40" Width="350"/>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>
