@@ -19,9 +19,9 @@
                 <ComboBox x:Name="Storage2_DROP" HorizontalAlignment="Left" Margin="295,178,0,0" VerticalAlignment="Top" Width="135" Height="33"/>
                 <ComboBox x:Name="Storage3_DROP" HorizontalAlignment="Left" Margin="295,216,0,0" VerticalAlignment="Top" Width="135" RenderTransformOrigin="-0.841,0.52" Height="32"/>
                 <ComboBox x:Name="PSU_DROP" HorizontalAlignment="Left" Margin="295,302,0,0" VerticalAlignment="Top" Width="135" Height="33"/>
-                <ComboBox x:Name="CaseRGB_DROP" HorizontalAlignment="Left" Margin="520,117,0,0" VerticalAlignment="Top" Width="140" Height="31"/>
-                <ComboBox x:Name="CaseStealth_DROP" HorizontalAlignment="Left" Margin="520,168,0,0" VerticalAlignment="Top" Width="140" Height="31"/>
-                <ComboBox x:Name="Airflow_DROP" HorizontalAlignment="Left" Margin="520,217,0,0" VerticalAlignment="Top" Width="140" Height="32"/>
+                <ComboBox x:Name="CaseRGB_DROP" HorizontalAlignment="Left" Margin="520,117,0,0" VerticalAlignment="Top" Width="140" Height="31" DropDownOpened="CaseRGB_DROP_DropDownOpened"/>
+                <ComboBox x:Name="CaseStealth_DROP" HorizontalAlignment="Left" Margin="520,168,0,0" VerticalAlignment="Top" Width="140" Height="31" DropDownOpened="CaseStealth_DROP_DropDownOpened"/>
+                <ComboBox x:Name="Airflow_DROP" HorizontalAlignment="Left" Margin="520,217,0,0" VerticalAlignment="Top" Width="140" Height="32" DropDownOpened="Airflow_DROP_DropDownOpened"/>
                 <ComboBox x:Name="OptionalFans_DROP" HorizontalAlignment="Left" Margin="520,302,0,0" VerticalAlignment="Top" Width="140" Height="32"/>
                 <ComboBox x:Name="OptionalLED_DROP" HorizontalAlignment="Left" Margin="520,355,0,0" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.437,0.393" Height="33"/>
                 <ComboBox x:Name="MOBO_DROP" HorizontalAlignment="Left" Margin="70,230,0,0" VerticalAlignment="Top" Width="146" Height="32"/>

@@ -33,7 +33,7 @@ namespace PcPartHelpenator
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        public void Window_Loaded(object sender, RoutedEventArgs e)
         {
             db = new PcHelpenatorEntities();
             var query1 = from a in db.CPUs
@@ -66,26 +66,45 @@ namespace PcPartHelpenator
                          select a.POWERSUPPLYBrand;
             PSU_DROP.ItemsSource = query7.ToList();
 
-            var query8 = from a in db.Cases
-                         select a.CASEName;
-
-            if (CaseStealth_DROP.IsDropDownOpen)
-            {
-                CaseStealth_DROP.ItemsSource = query8.ToList();
-            }
-            if (CaseRGB_DROP.IsDropDownOpen)
-            {
-                CaseRGB_DROP.ItemsSource = query8.ToList();
-            }
-            if (Airflow_DROP.IsDropDownOpen)
-            {
-                Airflow_DROP.ItemsSource = query8.ToList();
-            }
-
             var query9 = from a in db.OPTIONALs
                          select a.OPTIONALType;
             OptionalFans_DROP.ItemsSource = query9.ToList();
             OptionalLED_DROP.ItemsSource = query9.ToList(); 
+        }
+        private void CaseStealth_DROP_DropDownOpened(object sender, EventArgs e)
+        {
+            db = new PcHelpenatorEntities();
+
+            var query8 = from a in db.Cases
+                         select a.CASEName;
+            CaseStealth_DROP.ItemsSource = query8.ToList();
+
+            CaseRGB_DROP.ItemsSource = null;
+            Airflow_DROP.ItemsSource = null;
+        }
+
+        private void CaseRGB_DROP_DropDownOpened(object sender, EventArgs e)
+        {
+            db = new PcHelpenatorEntities();
+
+            var query8 = from a in db.Cases
+                         select a.CASEName;
+            CaseRGB_DROP.ItemsSource = query8.ToList();
+
+            CaseStealth_DROP.ItemsSource = null;
+            Airflow_DROP.ItemsSource = null;
+        }
+
+        private void Airflow_DROP_DropDownOpened(object sender, EventArgs e)
+        {
+            db = new PcHelpenatorEntities();
+
+            var query8 = from a in db.Cases
+                         select a.CASEName;
+            Airflow_DROP.ItemsSource = query8.ToList();
+
+            CaseRGB_DROP.ItemsSource = null;
+            CaseStealth_DROP.ItemsSource = null;
         }
     }
 }
