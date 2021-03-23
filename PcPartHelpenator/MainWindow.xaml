@@ -25,7 +25,7 @@
                 <ComboBox x:Name="CPU_DROP" HorizontalAlignment="Left" Margin="70,112,0,0" VerticalAlignment="Top" Width="146" Height="31"/>
                 <TextBlock HorizontalAlignment="Left" Margin="170,58,0,0" TextWrapping="Wrap" Text="B1ADEEE`s PC HELPENATOR" VerticalAlignment="Top" FontSize="20" FontFamily="Unispace"/>
                 <TextBlock HorizontalAlignment="Left" Margin="52,87,0,0" TextWrapping="Wrap" Text="1. CPU" VerticalAlignment="Top" FontSize="14"/>
-                <ComboBox x:Name="GPU_DROP" HorizontalAlignment="Left" Margin="70,169,0,0" VerticalAlignment="Top" Width="146" Height="35"/>
+                <ComboBox x:Name="GPU_DROP" HorizontalAlignment="Left" Margin="70,169,0,0" VerticalAlignment="Top" Width="146" Height="35" DropDownOpened="GPU_DROP_DropDownOpened"/>
                 <ComboBox x:Name="Heatsink_DROP" HorizontalAlignment="Left" Margin="70,293,0,0" VerticalAlignment="Top" Width="146" Height="32"/>
                 <ComboBox x:Name="RAM_DROP" HorizontalAlignment="Left" Margin="70,355,0,0" VerticalAlignment="Top" Width="146" Height="33"/>
                 <ComboBox x:Name="Storage1_DROP" HorizontalAlignment="Left" Margin="295,138,0,0" VerticalAlignment="Top" Width="135" Height="35"/>

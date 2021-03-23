@@ -40,14 +40,6 @@ namespace PcPartHelpenator
                         select a.CPUName;
             CPU_DROP.ItemsSource = query1.ToList();
 
-            var query2 = from a in db.GPUs
-                        select a.GPUName;
-            GPU_DROP.ItemsSource = query2.ToList();
-
-            var query3 = from a in db.MOTHERBOARDs
-                         select a.MOTHERBOARDName;
-            MOBO_DROP.ItemsSource = query3.ToList();
-
             var query4 = from a in db.HEATSINKs
                          select a.HEATSINKName;
             Heatsink_DROP.ItemsSource = query4.ToList();
@@ -185,6 +177,22 @@ namespace PcPartHelpenator
         private void RecPriceTBLK_Loaded(object sender, RoutedEventArgs e)
         {
             RecPriceTBLK.Text = Convert.ToString(Price);
+        }
+
+        private void GPU_DROP_DropDownOpened(object sender, EventArgs e)
+        {
+            db = new PcHelpenatorEntities();
+            var query2 = from a in db.GPUs
+                         select a.GPUName;
+            GPU_DROP.ItemsSource = query2.ToList();
+        }
+
+        private void MOBO_DROP_DropDownOpened(object sender, EventArgs e)
+        {
+            db = new PcHelpenatorEntities();
+            var query3 = from a in db.MOTHERBOARDs
+                         select a.MOTHERBOARDName;
+            MOBO_DROP.ItemsSource = query3.ToList();
         }
     }
 }
