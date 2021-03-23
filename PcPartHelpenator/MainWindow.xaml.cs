@@ -190,9 +190,32 @@ namespace PcPartHelpenator
         private void MOBO_DROP_DropDownOpened(object sender, EventArgs e)
         {
             db = new PcHelpenatorEntities();
-            var query3 = from a in db.MOTHERBOARDs
-                         select a.MOTHERBOARDName;
-            MOBO_DROP.ItemsSource = query3.ToList();
+            //CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
+            //if (SelectedCPU != null)
+            //{
+
+                var query3 = from a in db.MOTHERBOARDs
+                             select a;
+                MOBO_DROP.ItemsSource = query3.ToList();
+            //}
+        }
+
+        private void OptionalFans_DROP_DropDownOpened(object sender, EventArgs e)
+        {
+            db = new PcHelpenatorEntities();
+            var query9 = from a in db.OPTIONALs
+                         where a.OPTIONALType.Equals("FANS")
+                         select a.Property1;
+            OptionalFans_DROP.ItemsSource = query9.ToList();
+        }
+
+        private void OptionalLED_DROP_DropDownOpened(object sender, EventArgs e)
+        {
+            db = new PcHelpenatorEntities();
+            var query9 = from a in db.OPTIONALs
+                         where a.OPTIONALType.Equals("LED")
+                         select a.Property1;
+            OptionalLED_DROP.ItemsSource = query9.ToList();
         }
     }
 }
