@@ -123,13 +123,13 @@ namespace PcPartHelpenator
                 var query8v3 = from b in db.Cases
                                where b.Id == SelectedCase.Id
                                select b.CASERating;
-                int CaseRating = Convert.ToInt32(query8v3);
+                int CaseRating = query8v3.First();
                 Rating = Rating + CaseRating;
 
                 var query8v4 = from b in db.Cases
                                where b.Id == SelectedCase.Id
                                select b.CASEPrice;
-                int CasePrice = Convert.ToInt32(query8v4);
+                int CasePrice = query8v4.First();
                 Price = Price + CasePrice;
             }
         }
@@ -147,13 +147,13 @@ namespace PcPartHelpenator
                 var query8v3 = from b in db.Cases
                                where b.Id == SelectedCase.Id
                                select b.CASERating;
-                int CaseRating = Convert.ToInt32(query8v3);
+                int CaseRating = query8v3.First();
                 Rating = Rating + CaseRating;
 
                 var query8v4 = from b in db.Cases
                                where b.Id == SelectedCase.Id
                                select b.CASEPrice;
-                int CasePrice = Convert.ToInt32(query8v4);
+                int CasePrice = query8v4.First();
                 Price = Price + CasePrice;
             }
         }
@@ -171,15 +171,20 @@ namespace PcPartHelpenator
                 var query8v3 = from b in db.Cases
                                where b.Id == SelectedCase.Id
                                select b.CASERating;
-                int CaseRating = Convert.ToInt32(query8v3);
+                int CaseRating = query8v3.First();
                 Rating = Rating + CaseRating;
 
                 var query8v4 = from b in db.Cases
                                where b.Id == SelectedCase.Id
                                select b.CASEPrice;
-                int CasePrice = Convert.ToInt32(query8v4);
+                int CasePrice = query8v4.First();
                 Price = Price + CasePrice;
             }
+        }
+
+        private void RecPriceTBLK_Loaded(object sender, RoutedEventArgs e)
+        {
+            RecPriceTBLK.Text = Convert.ToString(Price);
         }
     }
 }
