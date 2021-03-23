@@ -102,10 +102,44 @@ namespace PcPartHelpenator
             var query8 = from a in db.Cases
                          select a;
             Airflow_DROP.ItemsSource = query8.ToList();
-            PCImageLBX.ItemsSource = query8.ToList();
-
             CaseRGB_DROP.ItemsSource = null;
             CaseStealth_DROP.ItemsSource = null;
+        }
+
+        private void Airflow_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Case SelectedCase = Airflow_DROP.SelectedItem as Case;
+            if (SelectedCase != null)
+            {
+                var query8v2 = from b in db.Cases
+                               where b.Id == SelectedCase.Id
+                               select b;
+                PCImageLBX.ItemsSource = query8v2.ToList();
+            }
+        }
+
+        private void CaseStealth_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Case SelectedCase = CaseStealth_DROP.SelectedItem as Case;
+            if (SelectedCase != null)
+            {
+                var query8v2 = from b in db.Cases
+                               where b.Id == SelectedCase.Id
+                               select b;
+                PCImageLBX.ItemsSource = query8v2.ToList();
+            }
+        }
+
+        private void CaseRGB_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Case SelectedCase = CaseRGB_DROP.SelectedItem as Case;
+            if (SelectedCase != null)
+            {
+                var query8v2 = from b in db.Cases
+                               where b.Id == SelectedCase.Id
+                               select b;
+                PCImageLBX.ItemsSource = query8v2.ToList();
+            }
         }
     }
 }
