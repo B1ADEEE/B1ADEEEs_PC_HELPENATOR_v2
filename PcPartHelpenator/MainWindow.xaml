@@ -37,7 +37,7 @@
                 <ComboBox ItemTemplate="{StaticResource DROPCase}" x:Name="Airflow_DROP" HorizontalAlignment="Left" Margin="520,217,0,0" VerticalAlignment="Top" Width="140" Height="32" DropDownOpened="Airflow_DROP_DropDownOpened" SelectionChanged="Airflow_DROP_SelectionChanged"/>
                 <ComboBox x:Name="OptionalFans_DROP" HorizontalAlignment="Left" Margin="520,302,0,0" VerticalAlignment="Top" Width="140" Height="32"/>
                 <ComboBox x:Name="OptionalLED_DROP" HorizontalAlignment="Left" Margin="520,355,0,0" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.437,0.393" Height="33"/>
-                <ComboBox x:Name="MOBO_DROP" HorizontalAlignment="Left" Margin="70,230,0,0" VerticalAlignment="Top" Width="146" Height="32"/>
+                <ComboBox x:Name="MOBO_DROP" HorizontalAlignment="Left" Margin="70,230,0,0" VerticalAlignment="Top" Width="146" Height="32" DropDownOpened="MOBO_DROP_DropDownOpened"/>
                 <TextBlock HorizontalAlignment="Left" Margin="52,147,0,0" TextWrapping="Wrap" Text="2. GPU" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.55,2.144"/>
                 <TextBlock HorizontalAlignment="Left" Margin="52,331,0,0" TextWrapping="Wrap" Text="5. RAM" VerticalAlignment="Top" FontSize="14"/>
                 <TextBlock HorizontalAlignment="Left" Margin="52,270,0,0" TextWrapping="Wrap" Text="4. HeatSink (CPU COOLER)" VerticalAlignment="Top" FontSize="14"/>
