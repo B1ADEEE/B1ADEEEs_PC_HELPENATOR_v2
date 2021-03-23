@@ -76,6 +76,7 @@ namespace PcPartHelpenator
             db = new PcHelpenatorEntities();
 
             var query8 = from a in db.Cases
+                         where a.CASELooks == "Stealth"
                          select a;
             CaseStealth_DROP.ItemsSource = query8.ToList();
 
@@ -88,6 +89,7 @@ namespace PcPartHelpenator
             db = new PcHelpenatorEntities();
 
             var query8 = from a in db.Cases
+                         where a.CASELooks == "RGB"
                          select a;
             CaseRGB_DROP.ItemsSource = query8.ToList();
 
@@ -100,6 +102,7 @@ namespace PcPartHelpenator
             db = new PcHelpenatorEntities();
 
             var query8 = from a in db.Cases
+                         where a.CASELooks == "Airflow"
                          select a;
             Airflow_DROP.ItemsSource = query8.ToList();
 
