@@ -102,6 +102,7 @@ namespace PcPartHelpenator
             var query8 = from a in db.Cases
                          select a;
             Airflow_DROP.ItemsSource = query8.ToList();
+
             CaseRGB_DROP.ItemsSource = null;
             CaseStealth_DROP.ItemsSource = null;
         }
