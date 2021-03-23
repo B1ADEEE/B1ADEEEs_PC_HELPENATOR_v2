@@ -119,6 +119,18 @@ namespace PcPartHelpenator
                                where b.Id == SelectedCase.Id
                                select b;
                 PCImageLBX.ItemsSource = query8v2.ToList();
+
+                var query8v3 = from b in db.Cases
+                               where b.Id == SelectedCase.Id
+                               select b.CASERating;
+                int CaseRating = Convert.ToInt32(query8v3);
+                Rating = Rating + CaseRating;
+
+                var query8v4 = from b in db.Cases
+                               where b.Id == SelectedCase.Id
+                               select b.CASEPrice;
+                int CasePrice = Convert.ToInt32(query8v4);
+                Price = Price + CasePrice;
             }
         }
 
@@ -131,6 +143,18 @@ namespace PcPartHelpenator
                                where b.Id == SelectedCase.Id
                                select b;
                 PCImageLBX.ItemsSource = query8v2.ToList();
+
+                var query8v3 = from b in db.Cases
+                               where b.Id == SelectedCase.Id
+                               select b.CASERating;
+                int CaseRating = Convert.ToInt32(query8v3);
+                Rating = Rating + CaseRating;
+
+                var query8v4 = from b in db.Cases
+                               where b.Id == SelectedCase.Id
+                               select b.CASEPrice;
+                int CasePrice = Convert.ToInt32(query8v4);
+                Price = Price + CasePrice;
             }
         }
 
@@ -143,6 +167,18 @@ namespace PcPartHelpenator
                                where b.Id == SelectedCase.Id
                                select b;
                 PCImageLBX.ItemsSource = query8v2.ToList();
+
+                var query8v3 = from b in db.Cases
+                               where b.Id == SelectedCase.Id
+                               select b.CASERating;
+                int CaseRating = Convert.ToInt32(query8v3);
+                Rating = Rating + CaseRating;
+
+                var query8v4 = from b in db.Cases
+                               where b.Id == SelectedCase.Id
+                               select b.CASEPrice;
+                int CasePrice = Convert.ToInt32(query8v4);
+                Price = Price + CasePrice;
             }
         }
     }
