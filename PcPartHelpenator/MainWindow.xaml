@@ -6,6 +6,19 @@
         xmlns:local="clr-namespace:PcPartHelpenator"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <DataTemplate x:Key="LBXPcImage">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{Binding Path=CASEImage}" Height="100"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="DROPCase">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=CASEName}"/>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    
     <TabControl TabStripPlacement="Top">
         <TabItem Name="PcMaker" Header="The HELPENATOR" Width="125">
             <Grid Margin="0,-47,0,-3">
@@ -19,9 +32,9 @@
                 <ComboBox x:Name="Storage2_DROP" HorizontalAlignment="Left" Margin="295,178,0,0" VerticalAlignment="Top" Width="135" Height="33"/>
                 <ComboBox x:Name="Storage3_DROP" HorizontalAlignment="Left" Margin="295,216,0,0" VerticalAlignment="Top" Width="135" RenderTransformOrigin="-0.841,0.52" Height="32"/>
                 <ComboBox x:Name="PSU_DROP" HorizontalAlignment="Left" Margin="295,302,0,0" VerticalAlignment="Top" Width="135" Height="33"/>
-                <ComboBox x:Name="CaseRGB_DROP" HorizontalAlignment="Left" Margin="520,117,0,0" VerticalAlignment="Top" Width="140" Height="31" DropDownOpened="CaseRGB_DROP_DropDownOpened"/>
-                <ComboBox x:Name="CaseStealth_DROP" HorizontalAlignment="Left" Margin="520,168,0,0" VerticalAlignment="Top" Width="140" Height="31" DropDownOpened="CaseStealth_DROP_DropDownOpened"/>
-                <ComboBox x:Name="Airflow_DROP" HorizontalAlignment="Left" Margin="520,217,0,0" VerticalAlignment="Top" Width="140" Height="32" DropDownOpened="Airflow_DROP_DropDownOpened"/>
+                <ComboBox ItemTemplate="{StaticResource DROPCase}" x:Name="CaseRGB_DROP" HorizontalAlignment="Left" Margin="520,117,0,0" VerticalAlignment="Top" Width="140" Height="31" DropDownOpened="CaseRGB_DROP_DropDownOpened"/>
+                <ComboBox ItemTemplate="{StaticResource DROPCase}" x:Name="CaseStealth_DROP" HorizontalAlignment="Left" Margin="520,168,0,0" VerticalAlignment="Top" Width="140" Height="31" DropDownOpened="CaseStealth_DROP_DropDownOpened"/>
+                <ComboBox ItemTemplate="{StaticResource DROPCase}" x:Name="Airflow_DROP" HorizontalAlignment="Left" Margin="520,217,0,0" VerticalAlignment="Top" Width="140" Height="32" DropDownOpened="Airflow_DROP_DropDownOpened"/>
                 <ComboBox x:Name="OptionalFans_DROP" HorizontalAlignment="Left" Margin="520,302,0,0" VerticalAlignment="Top" Width="140" Height="32"/>
                 <ComboBox x:Name="OptionalLED_DROP" HorizontalAlignment="Left" Margin="520,355,0,0" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.437,0.393" Height="33"/>
                 <ComboBox x:Name="MOBO_DROP" HorizontalAlignment="Left" Margin="70,230,0,0" VerticalAlignment="Top" Width="146" Height="32"/>
@@ -67,7 +80,7 @@
                 <TextBlock x:Name="RecPriceTBLK" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1" Margin="10" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" Width="184" Foreground="#FF0B00F7" FontFamily="Unispace"/>
                 <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" Margin="10" TextWrapping="Wrap" Text="€" VerticalAlignment="Top" FontSize="18" Width="184" Foreground="#FF0B00F7" FontFamily="Unispace"/>
                 <TextBlock HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1" Margin="10" TextWrapping="Wrap" Text="RECOMMENDED PRICE:" VerticalAlignment="Top" FontSize="16" Width="184" Foreground="#FF0B00F7" FontFamily="Unispace"/>
-                <ListBox x:Name="PCImageLBX" Grid.Column="0" Grid.RowSpan="5" HorizontalAlignment="Center" VerticalAlignment="Top" Height="300" Margin="40" Width="350"/>
+                <ListBox ItemTemplate="{StaticResource LBXPcImage}" x:Name="PCImageLBX" Grid.Column="0" Grid.RowSpan="5" HorizontalAlignment="Center" VerticalAlignment="Top" Height="300" Margin="40" Width="350"/>
             </Grid>
         </TabItem>
     </TabControl>

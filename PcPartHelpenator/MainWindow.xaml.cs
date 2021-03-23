@@ -76,7 +76,7 @@ namespace PcPartHelpenator
             db = new PcHelpenatorEntities();
 
             var query8 = from a in db.Cases
-                         select a.CASEName;
+                         select a;
             CaseStealth_DROP.ItemsSource = query8.ToList();
 
             CaseRGB_DROP.ItemsSource = null;
@@ -88,7 +88,7 @@ namespace PcPartHelpenator
             db = new PcHelpenatorEntities();
 
             var query8 = from a in db.Cases
-                         select a.CASEName;
+                         select a;
             CaseRGB_DROP.ItemsSource = query8.ToList();
 
             CaseStealth_DROP.ItemsSource = null;
@@ -100,8 +100,9 @@ namespace PcPartHelpenator
             db = new PcHelpenatorEntities();
 
             var query8 = from a in db.Cases
-                         select a.CASEName;
+                         select a;
             Airflow_DROP.ItemsSource = query8.ToList();
+            PCImageLBX.ItemsSource = query8.ToList();
 
             CaseRGB_DROP.ItemsSource = null;
             CaseStealth_DROP.ItemsSource = null;
