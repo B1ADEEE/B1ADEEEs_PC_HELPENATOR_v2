@@ -22,6 +22,13 @@
                 <TextBlock Text="{Binding Path=MOTHERBOARDName}"/>
             </StackPanel>
         </DataTemplate>
+        <DataTemplate x:Key="DROPStorage">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=STORAGESize}"/>
+                <TextBlock Text=" ~ "/>
+                <TextBlock Text="{Binding Path=STORAGEType}"/>
+            </StackPanel>
+        </DataTemplate>
     </Window.Resources>
     
     <TabControl TabStripPlacement="Top">
@@ -31,12 +38,12 @@
                 <TextBlock HorizontalAlignment="Left" Margin="170,58,0,0" TextWrapping="Wrap" Text="B1ADEEE`s PC HELPENATOR" VerticalAlignment="Top" FontSize="20" FontFamily="Unispace"/>
                 <TextBlock HorizontalAlignment="Left" Margin="52,87,0,0" TextWrapping="Wrap" Text="1. CPU" VerticalAlignment="Top" FontSize="14"/>
                 <ComboBox x:Name="GPU_DROP" HorizontalAlignment="Left" Margin="70,169,0,0" VerticalAlignment="Top" Width="146" Height="35" DropDownOpened="GPU_DROP_DropDownOpened"/>
-                <ComboBox x:Name="Heatsink_DROP" HorizontalAlignment="Left" Margin="70,293,0,0" VerticalAlignment="Top" Width="146" Height="32"/>
-                <ComboBox x:Name="RAM_DROP" HorizontalAlignment="Left" Margin="70,355,0,0" VerticalAlignment="Top" Width="146" Height="33"/>
-                <ComboBox x:Name="Storage1_DROP" HorizontalAlignment="Left" Margin="295,138,0,0" VerticalAlignment="Top" Width="135" Height="35"/>
-                <ComboBox x:Name="Storage2_DROP" HorizontalAlignment="Left" Margin="295,178,0,0" VerticalAlignment="Top" Width="135" Height="33"/>
-                <ComboBox x:Name="Storage3_DROP" HorizontalAlignment="Left" Margin="295,216,0,0" VerticalAlignment="Top" Width="135" RenderTransformOrigin="-0.841,0.52" Height="32"/>
-                <ComboBox x:Name="PSU_DROP" HorizontalAlignment="Left" Margin="295,302,0,0" VerticalAlignment="Top" Width="135" Height="33"/>
+                <ComboBox x:Name="Heatsink_DROP" HorizontalAlignment="Left" Margin="70,293,0,0" VerticalAlignment="Top" Width="146" Height="32" DropDownOpened="Heatsink_DROP_DropDownOpened"/>
+                <ComboBox x:Name="RAM_DROP" HorizontalAlignment="Left" Margin="70,355,0,0" VerticalAlignment="Top" Width="146" Height="33" DropDownOpened="RAM_DROP_DropDownOpened"/>
+                <ComboBox ItemTemplate="{StaticResource DROPStorage}" x:Name="Storage1_DROP" HorizontalAlignment="Left" Margin="295,138,0,0" VerticalAlignment="Top" Width="135" Height="35" DropDownOpened="Storage1_DROP_DropDownOpened"/>
+                <ComboBox ItemTemplate="{StaticResource DROPStorage}" x:Name="Storage2_DROP" HorizontalAlignment="Left" Margin="295,178,0,0" VerticalAlignment="Top" Width="135" Height="33" DropDownOpened="Storage2_DROP_DropDownOpened"/>
+                <ComboBox ItemTemplate="{StaticResource DROPStorage}" x:Name="Storage3_DROP" HorizontalAlignment="Left" Margin="295,216,0,0" VerticalAlignment="Top" Width="135" RenderTransformOrigin="-0.841,0.52" Height="32" DropDownOpened="Storage3_DROP_DropDownOpened"/>
+                <ComboBox x:Name="PSU_DROP" HorizontalAlignment="Left" Margin="295,302,0,0" VerticalAlignment="Top" Width="135" Height="33" DropDownOpened="PSU_DROP_DropDownOpened"/>
                 <ComboBox ItemTemplate="{StaticResource DROPCase}" x:Name="CaseRGB_DROP" HorizontalAlignment="Left" Margin="520,117,0,0" VerticalAlignment="Top" Width="140" Height="31" DropDownOpened="CaseRGB_DROP_DropDownOpened" SelectionChanged="CaseRGB_DROP_SelectionChanged"/>
                 <ComboBox ItemTemplate="{StaticResource DROPCase}" x:Name="CaseStealth_DROP" HorizontalAlignment="Left" Margin="520,168,0,0" VerticalAlignment="Top" Width="140" Height="31" DropDownOpened="CaseStealth_DROP_DropDownOpened" SelectionChanged="CaseStealth_DROP_SelectionChanged"/>
                 <ComboBox ItemTemplate="{StaticResource DROPCase}" x:Name="Airflow_DROP" HorizontalAlignment="Left" Margin="520,217,0,0" VerticalAlignment="Top" Width="140" Height="32" DropDownOpened="Airflow_DROP_DropDownOpened" SelectionChanged="Airflow_DROP_SelectionChanged"/>

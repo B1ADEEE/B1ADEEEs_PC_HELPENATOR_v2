@@ -39,29 +39,7 @@ namespace PcPartHelpenator
             var query1 = from a in db.CPUs
                         select a.CPUName;
             CPU_DROP.ItemsSource = query1.ToList();
-
-            var query4 = from a in db.HEATSINKs
-                         select a.HEATSINKName;
-            Heatsink_DROP.ItemsSource = query4.ToList();
-
-            var query5 = from a in db.RAMs
-                         select a.RAMSize;
-            RAM_DROP.ItemsSource = query5.ToList();
-
-            var query6 = from a in db.STORAGEs
-                         select a.STORAGESize;
-            Storage1_DROP.ItemsSource = query6.ToList();
-            Storage2_DROP.ItemsSource = query6.ToList();
-            Storage3_DROP.ItemsSource = query6.ToList();
-
-            var query7 = from a in db.POWERSUPPLies
-                         select a.POWERSUPPLYBrand;
-            PSU_DROP.ItemsSource = query7.ToList();
-
-            var query9 = from a in db.OPTIONALs
-                         select a.OPTIONALType;
-            OptionalFans_DROP.ItemsSource = query9.ToList();
-            OptionalLED_DROP.ItemsSource = query9.ToList(); 
+ 
         }
         private void CaseStealth_DROP_DropDownOpened(object sender, EventArgs e)
         {
@@ -216,6 +194,54 @@ namespace PcPartHelpenator
                          where a.OPTIONALType.Equals("LED")
                          select a.Property1;
             OptionalLED_DROP.ItemsSource = query9.ToList();
+        }
+
+        private void Heatsink_DROP_DropDownOpened(object sender, EventArgs e)
+        {
+            db = new PcHelpenatorEntities();
+            var query4 = from a in db.HEATSINKs
+                         select a.HEATSINKName;
+            Heatsink_DROP.ItemsSource = query4.ToList();
+        }
+
+        private void RAM_DROP_DropDownOpened(object sender, EventArgs e)
+        {
+            db = new PcHelpenatorEntities();
+            var query5 = from a in db.RAMs
+                         select a.RAMSize;
+            RAM_DROP.ItemsSource = query5.ToList();
+        }
+
+        private void Storage1_DROP_DropDownOpened(object sender, EventArgs e)
+        {
+            db = new PcHelpenatorEntities();
+            var query6 = from a in db.STORAGEs
+                         select a;
+            Storage1_DROP.ItemsSource = query6.ToList();
+        }
+
+        private void Storage2_DROP_DropDownOpened(object sender, EventArgs e)
+        {
+            db = new PcHelpenatorEntities();
+            var query6 = from a in db.STORAGEs
+                         select a;
+            Storage2_DROP.ItemsSource = query6.ToList();
+        }
+
+        private void Storage3_DROP_DropDownOpened(object sender, EventArgs e)
+        {
+            db = new PcHelpenatorEntities();
+            var query6 = from a in db.STORAGEs
+                         select a;
+            Storage3_DROP.ItemsSource = query6.ToList();
+        }
+
+        private void PSU_DROP_DropDownOpened(object sender, EventArgs e)
+        {
+            db = new PcHelpenatorEntities();
+            var query7 = from a in db.POWERSUPPLies
+                         select a.POWERSUPPLYBrand;
+            PSU_DROP.ItemsSource = query7.ToList();
         }
     }
 }
