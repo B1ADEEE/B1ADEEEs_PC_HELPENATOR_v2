@@ -175,7 +175,6 @@
     <Resource Include="images\KZ10.jpg" />
     <Resource Include="images\ICUE.jpg" />
     <Resource Include="images\DarkStar.jpg" />
-    <Resource Include="images\TD500.jpg" />
     <Resource Include="images\280x.jpg" />
     <Resource Include="images\void.jpg" />
     <Resource Include="images\Cyclon.jpg" />
@@ -184,6 +183,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="images\TD500.jpg" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
