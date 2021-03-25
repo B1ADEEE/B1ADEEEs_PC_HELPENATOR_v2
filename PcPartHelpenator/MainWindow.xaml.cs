@@ -284,58 +284,58 @@ namespace PcPartHelpenator
 
         private void MOBO_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
-            if (SelectedCPU != null)
+            MOTHERBOARD SelectedMobo = MOBO_DROP.SelectedItem as MOTHERBOARD;
+            if (SelectedMobo != null)
             {
-                var query1v2 = from b in db.CPUs
-                               where b.Id == SelectedCPU.Id
-                               select b.CPURating;
-                int CPURating = query1v2.First();
-                Rating = Rating + CPURating;
+                var query3v2 = from b in db.MOTHERBOARDs
+                               where b.Id == SelectedMobo.Id
+                               select b.MOTHERBOARDRating;
+                int MoboRating = query3v2.First();
+                Rating = Rating + MoboRating;
 
-                var query1v3 = from b in db.CPUs
-                               where b.Id == SelectedCPU.Id
-                               select b.CPUPrice;
-                int CPUPrice = query1v3.First();
-                Price = Price + CPUPrice;
+                var query3v3 = from b in db.MOTHERBOARDs
+                               where b.Id == SelectedMobo.Id
+                               select b.MOTHERBOARDPrice;
+                int MoboPrice = query3v3.First();
+                Price = Price + MoboPrice;
             }
         }
 
         private void Heatsink_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
-            if (SelectedCPU != null)
+            HEATSINK SelectedHeatSink = Heatsink_DROP.SelectedItem as HEATSINK;
+            if (SelectedHeatSink != null)
             {
-                var query1v2 = from b in db.CPUs
-                               where b.Id == SelectedCPU.Id
-                               select b.CPURating;
-                int CPURating = query1v2.First();
-                Rating = Rating + CPURating;
+                var query4v2 = from b in db.HEATSINKs
+                               where b.Id == SelectedHeatSink.Id
+                               select b.HEATSINKRating;
+                int HeatSinkRating = query4v2.First();
+                Rating = Rating + HeatSinkRating;
 
-                var query1v3 = from b in db.CPUs
-                               where b.Id == SelectedCPU.Id
-                               select b.CPUPrice;
-                int CPUPrice = query1v3.First();
-                Price = Price + CPUPrice;
+                var query4v3 = from b in db.HEATSINKs
+                               where b.Id == SelectedHeatSink.Id
+                               select b.HEATSINKPrice;
+                int HeatSinkPrice = query4v3.First();
+                Price = Price + HeatSinkPrice;
             }
         }
 
         private void RAM_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
-            if (SelectedCPU != null)
+            RAM SelectedRAM = RAM_DROP.SelectedItem as RAM;
+            if (SelectedRAM != null)
             {
-                var query1v2 = from b in db.CPUs
-                               where b.Id == SelectedCPU.Id
-                               select b.CPURating;
-                int CPURating = query1v2.First();
-                Rating = Rating + CPURating;
+                var query5v2 = from b in db.RAMs
+                               where b.Id == SelectedRAM.Id
+                               select b.RAMRating;
+                int RAMRating = query5v2.First();
+                Rating = Rating + RAMRating;
 
-                var query1v3 = from b in db.CPUs
-                               where b.Id == SelectedCPU.Id
-                               select b.CPUPrice;
-                int CPUPrice = query1v3.First();
-                Price = Price + CPUPrice;
+                var query5v3 = from b in db.RAMs
+                               where b.Id == SelectedRAM.Id
+                               select b.RAMPrice;
+                int RAMPrice = query5v3.First();
+                Price = Price + RAMPrice;
             }
         }
 
