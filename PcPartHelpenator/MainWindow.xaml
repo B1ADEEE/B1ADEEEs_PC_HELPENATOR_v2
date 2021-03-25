@@ -29,26 +29,58 @@
                 <TextBlock Text="{Binding Path=STORAGEType}"/>
             </StackPanel>
         </DataTemplate>
+        <DataTemplate x:Key="DROPRam">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=RAMSize}"/>
+                <TextBlock Text="GB ~ "/>
+                <TextBlock Text="{Binding Path=RAMSpeed}"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="DROPCpu">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=CPUName}"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="DROPGpu">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=GPUName}"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="DROPHeatSink">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=HEATSINKName}"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="DROPOptional">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=Property1}"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="DROPPsu">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=POWERSUPPLYBrand}"/>
+            </StackPanel>
+        </DataTemplate>
     </Window.Resources>
     
     <TabControl TabStripPlacement="Top">
         <TabItem Name="PcMaker" Header="The HELPENATOR" Width="125">
             <Grid Margin="0,-47,0,-3">
-                <ComboBox x:Name="CPU_DROP" HorizontalAlignment="Left" Margin="70,112,0,0" VerticalAlignment="Top" Width="146" Height="31"/>
+                <ComboBox ItemTemplate="{StaticResource DROPCpu}" x:Name="CPU_DROP" HorizontalAlignment="Left" Margin="70,112,0,0" VerticalAlignment="Top" Width="146" Height="31"/>
                 <TextBlock HorizontalAlignment="Left" Margin="170,58,0,0" TextWrapping="Wrap" Text="B1ADEEE`s PC HELPENATOR" VerticalAlignment="Top" FontSize="20" FontFamily="Unispace"/>
                 <TextBlock HorizontalAlignment="Left" Margin="52,87,0,0" TextWrapping="Wrap" Text="1. CPU" VerticalAlignment="Top" FontSize="14"/>
-                <ComboBox x:Name="GPU_DROP" HorizontalAlignment="Left" Margin="70,169,0,0" VerticalAlignment="Top" Width="146" Height="35" DropDownOpened="GPU_DROP_DropDownOpened"/>
-                <ComboBox x:Name="Heatsink_DROP" HorizontalAlignment="Left" Margin="70,293,0,0" VerticalAlignment="Top" Width="146" Height="32" DropDownOpened="Heatsink_DROP_DropDownOpened"/>
-                <ComboBox x:Name="RAM_DROP" HorizontalAlignment="Left" Margin="70,355,0,0" VerticalAlignment="Top" Width="146" Height="33" DropDownOpened="RAM_DROP_DropDownOpened"/>
+                <ComboBox ItemTemplate="{StaticResource DROPGpu}" x:Name="GPU_DROP" HorizontalAlignment="Left" Margin="70,169,0,0" VerticalAlignment="Top" Width="146" Height="35" DropDownOpened="GPU_DROP_DropDownOpened"/>
+                <ComboBox ItemTemplate="{StaticResource DROPHeatSink}" x:Name="Heatsink_DROP" HorizontalAlignment="Left" Margin="70,293,0,0" VerticalAlignment="Top" Width="146" Height="32" DropDownOpened="Heatsink_DROP_DropDownOpened"/>
+                <ComboBox ItemTemplate="{StaticResource DROPRam}" x:Name="RAM_DROP" HorizontalAlignment="Left" Margin="70,355,0,0" VerticalAlignment="Top" Width="146" Height="33" DropDownOpened="RAM_DROP_DropDownOpened"/>
                 <ComboBox ItemTemplate="{StaticResource DROPStorage}" x:Name="Storage1_DROP" HorizontalAlignment="Left" Margin="295,138,0,0" VerticalAlignment="Top" Width="135" Height="35" DropDownOpened="Storage1_DROP_DropDownOpened"/>
                 <ComboBox ItemTemplate="{StaticResource DROPStorage}" x:Name="Storage2_DROP" HorizontalAlignment="Left" Margin="295,178,0,0" VerticalAlignment="Top" Width="135" Height="33" DropDownOpened="Storage2_DROP_DropDownOpened"/>
                 <ComboBox ItemTemplate="{StaticResource DROPStorage}" x:Name="Storage3_DROP" HorizontalAlignment="Left" Margin="295,216,0,0" VerticalAlignment="Top" Width="135" RenderTransformOrigin="-0.841,0.52" Height="32" DropDownOpened="Storage3_DROP_DropDownOpened"/>
-                <ComboBox x:Name="PSU_DROP" HorizontalAlignment="Left" Margin="295,302,0,0" VerticalAlignment="Top" Width="135" Height="33" DropDownOpened="PSU_DROP_DropDownOpened"/>
+                <ComboBox ItemTemplate="{StaticResource DROPPsu}" x:Name="PSU_DROP" HorizontalAlignment="Left" Margin="295,302,0,0" VerticalAlignment="Top" Width="135" Height="33" DropDownOpened="PSU_DROP_DropDownOpened"/>
                 <ComboBox ItemTemplate="{StaticResource DROPCase}" x:Name="CaseRGB_DROP" HorizontalAlignment="Left" Margin="520,117,0,0" VerticalAlignment="Top" Width="140" Height="31" DropDownOpened="CaseRGB_DROP_DropDownOpened" SelectionChanged="CaseRGB_DROP_SelectionChanged"/>
                 <ComboBox ItemTemplate="{StaticResource DROPCase}" x:Name="CaseStealth_DROP" HorizontalAlignment="Left" Margin="520,168,0,0" VerticalAlignment="Top" Width="140" Height="31" DropDownOpened="CaseStealth_DROP_DropDownOpened" SelectionChanged="CaseStealth_DROP_SelectionChanged"/>
                 <ComboBox ItemTemplate="{StaticResource DROPCase}" x:Name="Airflow_DROP" HorizontalAlignment="Left" Margin="520,217,0,0" VerticalAlignment="Top" Width="140" Height="32" DropDownOpened="Airflow_DROP_DropDownOpened" SelectionChanged="Airflow_DROP_SelectionChanged"/>
-                <ComboBox x:Name="OptionalFans_DROP" HorizontalAlignment="Left" Margin="520,302,0,0" VerticalAlignment="Top" Width="140" Height="32" DropDownOpened="OptionalFans_DROP_DropDownOpened"/>
-                <ComboBox x:Name="OptionalLED_DROP" HorizontalAlignment="Left" Margin="520,355,0,0" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.437,0.393" Height="33" DropDownOpened="OptionalLED_DROP_DropDownOpened"/>
+                <ComboBox ItemTemplate="{StaticResource DROPOptional}" x:Name="OptionalFans_DROP" HorizontalAlignment="Left" Margin="520,302,0,0" VerticalAlignment="Top" Width="140" Height="32" DropDownOpened="OptionalFans_DROP_DropDownOpened"/>
+                <ComboBox ItemTemplate="{StaticResource DROPOptional}" x:Name="OptionalLED_DROP" HorizontalAlignment="Left" Margin="520,355,0,0" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.437,0.393" Height="33" DropDownOpened="OptionalLED_DROP_DropDownOpened"/>
                 <ComboBox ItemTemplate="{StaticResource DROPMobo}" x:Name="MOBO_DROP" HorizontalAlignment="Left" Margin="70,230,0,0" VerticalAlignment="Top" Width="146" Height="32" DropDownOpened="MOBO_DROP_DropDownOpened"/>
                 <TextBlock HorizontalAlignment="Left" Margin="52,147,0,0" TextWrapping="Wrap" Text="2. GPU" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.55,2.144"/>
                 <TextBlock HorizontalAlignment="Left" Margin="52,331,0,0" TextWrapping="Wrap" Text="5. RAM" VerticalAlignment="Top" FontSize="14"/>
@@ -92,7 +124,8 @@
                 <TextBlock x:Name="RecPriceTBLK" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1" Margin="146,9,63,0"  VerticalAlignment="Top" FontSize="18" Width="184" Foreground="#FF0B00F7" FontFamily="Unispace" Loaded="RecPriceTBLK_Loaded"/>
                 <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" Margin="10" TextWrapping="Wrap" Text="€" VerticalAlignment="Top" FontSize="18" Width="184" Foreground="#FF0B00F7" FontFamily="Unispace"/>
                 <TextBlock HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1" Margin="10" TextWrapping="Wrap" Text="RECOMMENDED PRICE:" VerticalAlignment="Top" FontSize="16" Width="184" Foreground="#FF0B00F7" FontFamily="Unispace"/>
-                <ListBox ItemTemplate="{StaticResource LBXPcImage}" x:Name="PCImageLBX" Grid.Column="0" Grid.RowSpan="5" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" Margin="40"  Width="300" Height="350"/>
+                <ListBox ItemTemplate="{StaticResource LBXPcImage}" x:Name="PCImageLBX" Grid.Column="0" Grid.RowSpan="5" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" Margin="40"  Width="350" Height="300">
+                </ListBox>
             </Grid>
         </TabItem>
     </TabControl>

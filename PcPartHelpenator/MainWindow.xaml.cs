@@ -37,7 +37,7 @@ namespace PcPartHelpenator
         {
             db = new PcHelpenatorEntities();
             var query1 = from a in db.CPUs
-                        select a.CPUName;
+                        select a;
             CPU_DROP.ItemsSource = query1.ToList();
  
         }
@@ -161,7 +161,7 @@ namespace PcPartHelpenator
         {
             db = new PcHelpenatorEntities();
             var query2 = from a in db.GPUs
-                         select a.GPUName;
+                         select a;
             GPU_DROP.ItemsSource = query2.ToList();
         }
 
@@ -183,7 +183,7 @@ namespace PcPartHelpenator
             db = new PcHelpenatorEntities();
             var query9 = from a in db.OPTIONALs
                          where a.OPTIONALType.Equals("FANS")
-                         select a.Property1;
+                         select a;
             OptionalFans_DROP.ItemsSource = query9.ToList();
         }
 
@@ -192,7 +192,7 @@ namespace PcPartHelpenator
             db = new PcHelpenatorEntities();
             var query9 = from a in db.OPTIONALs
                          where a.OPTIONALType.Equals("LED")
-                         select a.Property1;
+                         select a;
             OptionalLED_DROP.ItemsSource = query9.ToList();
         }
 
@@ -200,7 +200,7 @@ namespace PcPartHelpenator
         {
             db = new PcHelpenatorEntities();
             var query4 = from a in db.HEATSINKs
-                         select a.HEATSINKName;
+                         select a;
             Heatsink_DROP.ItemsSource = query4.ToList();
         }
 
@@ -208,7 +208,7 @@ namespace PcPartHelpenator
         {
             db = new PcHelpenatorEntities();
             var query5 = from a in db.RAMs
-                         select a.RAMSize;
+                         select a;
             RAM_DROP.ItemsSource = query5.ToList();
         }
 
@@ -240,7 +240,7 @@ namespace PcPartHelpenator
         {
             db = new PcHelpenatorEntities();
             var query7 = from a in db.POWERSUPPLies
-                         select a.POWERSUPPLYBrand;
+                         select a;
             PSU_DROP.ItemsSource = query7.ToList();
         }
     }
