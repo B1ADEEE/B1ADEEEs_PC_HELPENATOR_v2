@@ -341,32 +341,116 @@ namespace PcPartHelpenator
 
         private void Storage1_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            STORAGE SelectedSage1 = Storage1_DROP.SelectedItem as STORAGE;
+            if (SelectedSage1 != null)
+            {
+                var query6v2 = from b in db.STORAGEs
+                               where b.Id == SelectedSage1.Id
+                               select b.STORAGERating;
+                int SageRating = query6v2.First();
+                Rating = Rating + SageRating;
 
+                var query6v3 = from b in db.STORAGEs
+                               where b.Id == SelectedSage1.Id
+                               select b.STORAGEPrice;
+                int SagePrice = query6v3.First();
+                Price = Price + SagePrice;
+            }
         }
 
         private void Storage2_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            STORAGE SelectedSage2 = Storage2_DROP.SelectedItem as STORAGE;
+            if (SelectedSage2 != null)
+            {
+                var query6v2 = from b in db.STORAGEs
+                               where b.Id == SelectedSage2.Id
+                               select b.STORAGERating;
+                int SageRating = query6v2.First();
+                Rating = Rating + SageRating;
 
+                var query6v3 = from b in db.STORAGEs
+                               where b.Id == SelectedSage2.Id
+                               select b.STORAGEPrice;
+                int SagePrice = query6v3.First();
+                Price = Price + SagePrice;
+            }
         }
 
         private void Storage3_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            STORAGE SelectedSage3 = Storage3_DROP.SelectedItem as STORAGE;
+            if (SelectedSage3 != null)
+            {
+                var query6v2 = from b in db.STORAGEs
+                               where b.Id == SelectedSage3.Id
+                               select b.STORAGERating;
+                int SageRating = query6v2.First();
+                Rating = Rating + SageRating;
 
+                var query6v3 = from b in db.STORAGEs
+                               where b.Id == SelectedSage3.Id
+                               select b.STORAGEPrice;
+                int SagePrice = query6v3.First();
+                Price = Price + SagePrice;
+            }
         }
 
         private void PSU_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            POWERSUPPLy SelectedPSU = PSU_DROP.SelectedItem as POWERSUPPLy;
+            if (SelectedPSU != null)
+            {
+                var query7v2 = from b in db.POWERSUPPLies
+                               where b.Id == SelectedPSU.Id
+                               select b.POWERSUPPLYRating;
+                int PSURating = query7v2.First();
+                Rating = Rating + PSURating;
 
+                var query7v3 = from b in db.POWERSUPPLies
+                               where b.Id == SelectedPSU.Id
+                               select b.POWERSUPPLYPrice;
+                int PSUPrice = query7v3.First();
+                Price = Price + PSUPrice;
+            }
         }
 
         private void OptionalFans_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            OPTIONAL SelectedFan = OptionalFans_DROP.SelectedItem as OPTIONAL;
+            if (SelectedFan != null)
+            {
+                var query9v2 = from b in db.OPTIONALs
+                               where b.Id == SelectedFan.Id
+                               select b.OPTIONALRating;
+                int FanRating = query9v2.First();
+                Rating = Rating + FanRating;
 
+                var query9v3 = from b in db.OPTIONALs
+                               where b.Id == SelectedFan.Id
+                               select b.OPTIONALPrice;
+                int FanPrice = query9v3.First();
+                Price = Price + FanPrice;
+            }
         }
 
         private void OptionalLED_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            OPTIONAL SelectedLED = OptionalLED_DROP.SelectedItem as OPTIONAL;
+            if (SelectedLED != null)
+            {
+                var query9v2 = from b in db.OPTIONALs
+                               where b.Id == SelectedLED.Id
+                               select b.OPTIONALRating;
+                int LEDRating = query9v2.First();
+                Rating = Rating + LEDRating;
 
+                var query9v3 = from b in db.OPTIONALs
+                               where b.Id == SelectedLED.Id
+                               select b.OPTIONALPrice;
+                int LEDPrice = query9v3.First();
+                Price = Price + LEDPrice;
+            }
         }
 
         private void BuildRatingTBLK_Loaded(object sender, RoutedEventArgs e)
