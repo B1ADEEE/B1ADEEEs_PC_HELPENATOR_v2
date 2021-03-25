@@ -20,7 +20,7 @@ namespace PcPartHelpenator
     /// </summary>
     /*
      * 
-     * ------ GITHUB: https://github.com/B1ADEEE/B1ADEEEs_PC_HELPENATOR
+     * ------ GITHUB: https://github.com/B1ADEEE/B1ADEEEs_PC_HELPENATOR_v2
      * 
      */
     public partial class MainWindow : Window
@@ -242,6 +242,142 @@ namespace PcPartHelpenator
             var query7 = from a in db.POWERSUPPLies
                          select a;
             PSU_DROP.ItemsSource = query7.ToList();
+        }
+
+        private void CPU_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
+            if (SelectedCPU != null)
+            {
+                var query1v2 = from b in db.CPUs
+                               where b.Id == SelectedCPU.Id
+                               select b.CPURating;
+                int CPURating = query1v2.First();
+                Rating = Rating + CPURating;
+
+                var query1v3 = from b in db.CPUs
+                               where b.Id == SelectedCPU.Id
+                               select b.CPUPrice;
+                int CPUPrice = query1v3.First();
+                Price = Price + CPUPrice;
+            }
+        }
+
+        private void GPU_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            GPU SelectedGPU = GPU_DROP.SelectedItem as GPU;
+            if (SelectedGPU != null)
+            {
+                var query2v2 = from b in db.GPUs
+                               where b.Id == SelectedGPU.Id
+                               select b.GPURating;
+                int GPURating = query2v2.First();
+                Rating = Rating + GPURating;
+
+                var query2v3 = from b in db.GPUs
+                               where b.Id == SelectedGPU.Id
+                               select b.GPUPrice;
+                int GPUPrice = query2v3.First();
+                Price = Price + GPUPrice;
+            }
+        }
+
+        private void MOBO_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
+            if (SelectedCPU != null)
+            {
+                var query1v2 = from b in db.CPUs
+                               where b.Id == SelectedCPU.Id
+                               select b.CPURating;
+                int CPURating = query1v2.First();
+                Rating = Rating + CPURating;
+
+                var query1v3 = from b in db.CPUs
+                               where b.Id == SelectedCPU.Id
+                               select b.CPUPrice;
+                int CPUPrice = query1v3.First();
+                Price = Price + CPUPrice;
+            }
+        }
+
+        private void Heatsink_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
+            if (SelectedCPU != null)
+            {
+                var query1v2 = from b in db.CPUs
+                               where b.Id == SelectedCPU.Id
+                               select b.CPURating;
+                int CPURating = query1v2.First();
+                Rating = Rating + CPURating;
+
+                var query1v3 = from b in db.CPUs
+                               where b.Id == SelectedCPU.Id
+                               select b.CPUPrice;
+                int CPUPrice = query1v3.First();
+                Price = Price + CPUPrice;
+            }
+        }
+
+        private void RAM_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
+            if (SelectedCPU != null)
+            {
+                var query1v2 = from b in db.CPUs
+                               where b.Id == SelectedCPU.Id
+                               select b.CPURating;
+                int CPURating = query1v2.First();
+                Rating = Rating + CPURating;
+
+                var query1v3 = from b in db.CPUs
+                               where b.Id == SelectedCPU.Id
+                               select b.CPUPrice;
+                int CPUPrice = query1v3.First();
+                Price = Price + CPUPrice;
+            }
+        }
+
+        private void Storage1_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Storage2_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Storage3_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void PSU_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void OptionalFans_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void OptionalLED_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void BuildRatingTBLK_Loaded(object sender, RoutedEventArgs e)
+        {
+            BuildRatingTBLK.Text = Convert.ToString(Rating);
+        }
+
+        private void TextBlock_Loaded(object sender, RoutedEventArgs e)
+        {
+            int MaxPrice = Price + 200;
+            MaxPriceTBLK.Text = Convert.ToString(MaxPrice);
         }
     }
 }
