@@ -279,8 +279,13 @@ namespace PcPartHelpenator
 
         private void PSU_DROP_DropDownOpened(object sender, EventArgs e)
         {
+            
             db = new PcHelpenatorEntities();
+            CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
+            GPU SelectedGPU = GPU_DROP.SelectedItem as GPU;
+            int PCWatts = SelectedCPU.CPUWatts + SelectedGPU.GPUWatts + 250;
             var query7 = from a in db.POWERSUPPLies
+                         where a.POWERSUPPLYWatts >= PCWatts
                          select a;
             PSU_DROP.ItemsSource = query7.ToList();
         }
