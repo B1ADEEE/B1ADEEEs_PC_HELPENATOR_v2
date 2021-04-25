@@ -44,12 +44,25 @@ namespace PcPartHelpenator
         private void CaseStealth_DROP_DropDownOpened(object sender, EventArgs e)
         {
             db = new PcHelpenatorEntities();
-
-            var query8 = from a in db.Cases
-                         where a.CASELooks == "Stealth"
-                         select a;
-            CaseStealth_DROP.ItemsSource = query8.ToList();
-
+            MOTHERBOARD SelectedMobo = MOBO_DROP.SelectedItem as MOTHERBOARD;
+            if (SelectedMobo != null)
+            {
+                string MoboType = SelectedMobo.MOTHERBOARDSize;
+                if (MoboType == "ATX")
+                {
+                    var query8 = from a in db.Cases
+                                 where a.CASELooks == "Stealth" && a.CASESize == "ATX"
+                                 select a;
+                    CaseStealth_DROP.ItemsSource = query8.ToList();
+                }
+                else
+                {
+                    var query8 = from a in db.Cases
+                                 where a.CASELooks == "Stealth"
+                                 select a;
+                    CaseStealth_DROP.ItemsSource = query8.ToList();
+                }
+            }
             CaseRGB_DROP.ItemsSource = null;
             Airflow_DROP.ItemsSource = null;
         }
@@ -57,12 +70,25 @@ namespace PcPartHelpenator
         private void CaseRGB_DROP_DropDownOpened(object sender, EventArgs e)
         {
             db = new PcHelpenatorEntities();
-
-            var query8 = from a in db.Cases
-                         where a.CASELooks == "RGB"
-                         select a;
-            CaseRGB_DROP.ItemsSource = query8.ToList();
-
+            MOTHERBOARD SelectedMobo = MOBO_DROP.SelectedItem as MOTHERBOARD;
+            if (SelectedMobo != null)
+            {
+                string MoboType = SelectedMobo.MOTHERBOARDSize;
+                if (MoboType == "ATX")
+                {
+                    var query8 = from a in db.Cases
+                                 where a.CASELooks == "RGB" && a.CASESize == "ATX"
+                                 select a;
+                    CaseRGB_DROP.ItemsSource = query8.ToList();
+                }
+                else
+                {
+                    var query8 = from a in db.Cases
+                                 where a.CASELooks == "RGB"
+                                 select a;
+                    CaseRGB_DROP.ItemsSource = query8.ToList();
+                }
+            }
             CaseStealth_DROP.ItemsSource = null;
             Airflow_DROP.ItemsSource = null;
         }
@@ -70,12 +96,25 @@ namespace PcPartHelpenator
         private void Airflow_DROP_DropDownOpened(object sender, EventArgs e)
         {
             db = new PcHelpenatorEntities();
-
-            var query8 = from a in db.Cases
-                         where a.CASELooks == "Airflow"
-                         select a;
-            Airflow_DROP.ItemsSource = query8.ToList();
-
+            MOTHERBOARD SelectedMobo = MOBO_DROP.SelectedItem as MOTHERBOARD;
+            if (SelectedMobo != null)
+            {
+                string MoboType = SelectedMobo.MOTHERBOARDSize;
+                if (MoboType == "ATX")
+                {
+                    var query8 = from a in db.Cases
+                                 where a.CASELooks == "Airflow" && a.CASESize == "ATX"
+                                 select a;
+                    Airflow_DROP.ItemsSource = query8.ToList();
+                }
+                else
+                {
+                    var query8 = from a in db.Cases
+                                 where a.CASELooks == "Airflow"
+                                 select a;
+                    Airflow_DROP.ItemsSource = query8.ToList();
+                }
+            }
             CaseRGB_DROP.ItemsSource = null;
             CaseStealth_DROP.ItemsSource = null;
         }
