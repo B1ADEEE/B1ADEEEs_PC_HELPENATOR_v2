@@ -168,14 +168,25 @@ namespace PcPartHelpenator
         private void MOBO_DROP_DropDownOpened(object sender, EventArgs e)
         {
             db = new PcHelpenatorEntities();
-            //CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
-            //if (SelectedCPU != null)
-            //{
-
-                var query3 = from a in db.MOTHERBOARDs
-                             select a;
-                MOBO_DROP.ItemsSource = query3.ToList();
-            //}
+            CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
+            if (SelectedCPU != null)
+            {
+                string CpuType = SelectedCPU.CPUSocketType;
+                if (CpuType == "LGA 1200")
+                {
+                    var query3 = from a in db.MOTHERBOARDs
+                                 where a.MOTHERBOARDSocke == "LGA 1200"
+                                 select a;
+                    MOBO_DROP.ItemsSource = query3.ToList();
+                }
+                else
+                {
+                    var query3 = from a in db.MOTHERBOARDs
+                                 where a.MOTHERBOARDSocke == "AM4"
+                                 select a;
+                    MOBO_DROP.ItemsSource = query3.ToList();
+                }
+            }
         }
 
         private void OptionalFans_DROP_DropDownOpened(object sender, EventArgs e)
