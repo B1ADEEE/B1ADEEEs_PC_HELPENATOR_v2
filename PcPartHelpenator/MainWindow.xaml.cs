@@ -233,9 +233,24 @@ namespace PcPartHelpenator
         private void RAM_DROP_DropDownOpened(object sender, EventArgs e)
         {
             db = new PcHelpenatorEntities();
-            var query5 = from a in db.RAMs
-                         select a;
-            RAM_DROP.ItemsSource = query5.ToList();
+            MOTHERBOARD SelectedMobo = MOBO_DROP.SelectedItem as MOTHERBOARD;
+            if (SelectedMobo != null)
+            {
+                int maxRam = SelectedMobo.MOTHERBOARDMaxRam;
+                if (maxRam == 16)
+                {
+                    var query5 = from a in db.RAMs
+                                 where a.RAMSize == 16 || a.RAMSize == 8
+                                 select a;
+                    RAM_DROP.ItemsSource = query5.ToList();
+                }
+                else
+                {
+                    var query5 = from a in db.RAMs
+                                 select a;
+                    RAM_DROP.ItemsSource = query5.ToList();
+                }
+            }
         }
 
         private void Storage1_DROP_DropDownOpened(object sender, EventArgs e)
