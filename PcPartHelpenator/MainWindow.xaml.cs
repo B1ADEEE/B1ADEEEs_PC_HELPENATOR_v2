@@ -210,9 +210,24 @@ namespace PcPartHelpenator
         private void Heatsink_DROP_DropDownOpened(object sender, EventArgs e)
         {
             db = new PcHelpenatorEntities();
-            var query4 = from a in db.HEATSINKs
-                         select a;
-            Heatsink_DROP.ItemsSource = query4.ToList();
+            CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
+            if (SelectedCPU != null)
+            {
+                string CpuType = SelectedCPU.CPUHeatsink;
+                if (CpuType == "NO")
+                {
+                    var query4 = from a in db.HEATSINKs
+                                 where a.HEATSINKSocket == "Any"
+                                 select a;
+                    Heatsink_DROP.ItemsSource = query4.ToList();
+                }
+                else
+                {
+                    var query4 = from a in db.HEATSINKs
+                                 select a;
+                    Heatsink_DROP.ItemsSource = query4.ToList();
+                }
+            }
         }
 
         private void RAM_DROP_DropDownOpened(object sender, EventArgs e)
