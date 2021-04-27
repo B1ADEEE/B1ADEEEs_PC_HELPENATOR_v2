@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Media;
 
 namespace PcPartHelpenator
 {
@@ -35,6 +36,13 @@ namespace PcPartHelpenator
 
         public void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Uri uri = new Uri (@"sound/");
+            var player = new MediaPlayer();
+            player.Open(uri);
+            player.Play(); 
+            //SoundPlayer playSound = new SoundPlayer(Properties.Resources._03__The_Son_of_Flynn);
+           // playSound.PlayLooping();
+
             db = new PcHelpenatorEntities();
             var query1 = from a in db.CPUs
                         select a;
