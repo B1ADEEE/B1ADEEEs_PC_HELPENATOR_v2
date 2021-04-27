@@ -30,6 +30,30 @@ namespace PcPartHelpenator
         System.Media.SoundPlayer Player = new System.Media.SoundPlayer();
         int Rating;
         int Price;
+        int SelectionChangeCounterCase = 0;
+        int oldCasePrice = 0;
+        int oldCaseRating = 0;
+        int SelectionChangeCounterCPU = 0;
+        int oldCPUPrice = 0;
+        int oldCPURating = 0;
+        int SelectionChangeCounterGPU = 0;
+        int oldGPUPrice = 0;
+        int oldGPURating = 0;
+        int SelectionChangeCounterMOBO = 0;
+        int oldMOBOPrice = 0;
+        int oldMOBORating = 0;
+        int SelectionChangeCounterRAM = 0;
+        int oldRAMPrice = 0;
+        int oldRAMRating = 0;
+        int SelectionChangeCounterSTORAGE = 0;
+        int oldSTOPrice = 0;
+        int oldSTORating = 0;
+        int SelectionChangeCounterPSU = 0;
+        int oldPSUPrice = 0;
+        int oldPSURating = 0;
+        int SelectionChangeCounterOPTIONAL = 0;
+        int oldOPPrice = 0;
+        int oldOPRating = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -127,8 +151,16 @@ namespace PcPartHelpenator
         private void Airflow_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Case SelectedCase = Airflow_DROP.SelectedItem as Case;
+            int CaseRating;
+            int CasePrice;
             if (SelectedCase != null)
             {
+                if (SelectionChangeCounterCase == 1)
+                {
+                    Rating = Rating - oldCaseRating;
+                    Price = Price - oldCasePrice;
+                }
+                SelectionChangeCounterCase = 1;
                 var query8v2 = from b in db.Cases
                                where b.Id == SelectedCase.Id
                                select b;
@@ -137,22 +169,34 @@ namespace PcPartHelpenator
                 var query8v3 = from b in db.Cases
                                where b.Id == SelectedCase.Id
                                select b.CASERating;
-                int CaseRating = query8v3.First();
+                CaseRating = query8v3.First();
                 Rating = Rating + CaseRating;
+                oldCaseRating = CaseRating;
+                CaseRating = 0;
 
                 var query8v4 = from b in db.Cases
                                where b.Id == SelectedCase.Id
                                select b.CASEPrice;
-                int CasePrice = query8v4.First();
+                CasePrice = query8v4.First();
                 Price = Price + CasePrice;
+                oldCasePrice = CasePrice;
+                CasePrice = 0;
             }
         }
 
         private void CaseStealth_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Case SelectedCase = CaseStealth_DROP.SelectedItem as Case;
+            int CaseRating;
+            int CasePrice;
             if (SelectedCase != null)
             {
+                if (SelectionChangeCounterCase == 1)
+                {
+                    Rating = Rating - oldCaseRating;
+                    Price = Price - oldCasePrice;
+                }
+                SelectionChangeCounterCase = 1;
                 var query8v2 = from b in db.Cases
                                where b.Id == SelectedCase.Id
                                select b;
@@ -161,22 +205,34 @@ namespace PcPartHelpenator
                 var query8v3 = from b in db.Cases
                                where b.Id == SelectedCase.Id
                                select b.CASERating;
-                int CaseRating = query8v3.First();
+                CaseRating = query8v3.First();
                 Rating = Rating + CaseRating;
+                oldCaseRating = CaseRating;
+                CaseRating = 0;
 
                 var query8v4 = from b in db.Cases
                                where b.Id == SelectedCase.Id
                                select b.CASEPrice;
-                int CasePrice = query8v4.First();
+                CasePrice = query8v4.First();
                 Price = Price + CasePrice;
+                oldCasePrice = CasePrice;
+                CasePrice = 0;
             }
         }
 
         private void CaseRGB_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Case SelectedCase = CaseRGB_DROP.SelectedItem as Case;
+            int CaseRating;
+            int CasePrice;
             if (SelectedCase != null)
             {
+                if (SelectionChangeCounterCase == 1)
+                {
+                    Rating = Rating - oldCaseRating;
+                    Price = Price - oldCasePrice;
+                }
+                SelectionChangeCounterCase = 1;
                 var query8v2 = from b in db.Cases
                                where b.Id == SelectedCase.Id
                                select b;
@@ -185,14 +241,18 @@ namespace PcPartHelpenator
                 var query8v3 = from b in db.Cases
                                where b.Id == SelectedCase.Id
                                select b.CASERating;
-                int CaseRating = query8v3.First();
+                CaseRating = query8v3.First();
                 Rating = Rating + CaseRating;
+                oldCaseRating = CaseRating;
+                CaseRating = 0;
 
                 var query8v4 = from b in db.Cases
                                where b.Id == SelectedCase.Id
                                select b.CASEPrice;
-                int CasePrice = query8v4.First();
+                CasePrice = query8v4.First();
                 Price = Price + CasePrice;
+                oldCasePrice = CasePrice;
+                CasePrice = 0;
             }
         }
 
@@ -337,18 +397,20 @@ namespace PcPartHelpenator
         private void CPU_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
+            int CPURating;
+            int CPUPrice;
             if (SelectedCPU != null)
             {
                 var query1v2 = from b in db.CPUs
                                where b.Id == SelectedCPU.Id
                                select b.CPURating;
-                int CPURating = query1v2.First();
+                CPURating = query1v2.First();
                 Rating = Rating + CPURating;
 
                 var query1v3 = from b in db.CPUs
                                where b.Id == SelectedCPU.Id
                                select b.CPUPrice;
-                int CPUPrice = query1v3.First();
+                CPUPrice = query1v3.First();
                 Price = Price + CPUPrice;
             }
         }
