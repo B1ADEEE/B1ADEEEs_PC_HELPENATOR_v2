@@ -42,18 +42,30 @@ namespace PcPartHelpenator
         int SelectionChangeCounterMOBO = 0;
         int oldMOBOPrice = 0;
         int oldMOBORating = 0;
+        int SelectionChangeCounterHEAT = 0;
+        int oldHEATPrice = 0;
+        int oldHEATRating = 0;
         int SelectionChangeCounterRAM = 0;
         int oldRAMPrice = 0;
         int oldRAMRating = 0;
-        int SelectionChangeCounterSTORAGE = 0;
-        int oldSTOPrice = 0;
-        int oldSTORating = 0;
+        int SelectionChangeCounterSTORAGE1 = 0;
+        int SelectionChangeCounterSTORAGE2 = 0;
+        int SelectionChangeCounterSTORAGE3 = 0;
+        int oldSTO1Price = 0;
+        int oldSTO1Rating = 0;
+        int oldSTO2Price = 0;
+        int oldSTO2Rating = 0;
+        int oldSTO3Price = 0;
+        int oldSTO3Rating = 0;
         int SelectionChangeCounterPSU = 0;
         int oldPSUPrice = 0;
         int oldPSURating = 0;
-        int SelectionChangeCounterOPTIONAL = 0;
-        int oldOPPrice = 0;
-        int oldOPRating = 0;
+        int SelectionChangeCounterOPTIONALFAN = 0;
+        int oldOP1Price = 0;
+        int oldOP1Rating = 0;
+        int SelectionChangeCounterOPTIONALLED = 0;
+        int oldOP2Price = 0;
+        int oldOP2Rating = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -401,213 +413,346 @@ namespace PcPartHelpenator
             int CPUPrice;
             if (SelectedCPU != null)
             {
+                if (SelectionChangeCounterCPU == 1)
+                {
+                    Rating = Rating - oldCPURating;
+                    Price = Price - oldCPUPrice;
+                }
+                SelectionChangeCounterCPU = 1;
                 var query1v2 = from b in db.CPUs
                                where b.Id == SelectedCPU.Id
                                select b.CPURating;
                 CPURating = query1v2.First();
                 Rating = Rating + CPURating;
+                oldCPURating = CPURating;
+                CPURating = 0;
 
                 var query1v3 = from b in db.CPUs
                                where b.Id == SelectedCPU.Id
                                select b.CPUPrice;
                 CPUPrice = query1v3.First();
                 Price = Price + CPUPrice;
+                oldCPUPrice = CPUPrice;
+                CPUPrice = 0;
             }
         }
 
         private void GPU_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             GPU SelectedGPU = GPU_DROP.SelectedItem as GPU;
+            int GPURating;
+            int GPUPrice;
             if (SelectedGPU != null)
             {
+                if (SelectionChangeCounterGPU == 1)
+                {
+                    Price = Price - oldGPUPrice;
+                    Rating = Rating - oldGPURating;
+                }
+                SelectionChangeCounterGPU = 1;
                 var query2v2 = from b in db.GPUs
                                where b.Id == SelectedGPU.Id
                                select b.GPURating;
-                int GPURating = query2v2.First();
+                GPURating = query2v2.First();
                 Rating = Rating + GPURating;
+                oldGPURating = GPURating;
+                GPURating = 0;
 
                 var query2v3 = from b in db.GPUs
                                where b.Id == SelectedGPU.Id
                                select b.GPUPrice;
-                int GPUPrice = query2v3.First();
+                GPUPrice = query2v3.First();
                 Price = Price + GPUPrice;
+                oldGPUPrice = GPUPrice;
+                GPUPrice = 0;
             }
         }
 
         private void MOBO_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             MOTHERBOARD SelectedMobo = MOBO_DROP.SelectedItem as MOTHERBOARD;
+            int MoboRating;
+            int MoboPrice;
             if (SelectedMobo != null)
             {
+                if (SelectionChangeCounterMOBO == 1)
+                {
+                    Rating = Rating - oldMOBORating;
+                    Price = Price - oldMOBOPrice;
+                }
+                SelectionChangeCounterMOBO = 1;
                 var query3v2 = from b in db.MOTHERBOARDs
                                where b.Id == SelectedMobo.Id
                                select b.MOTHERBOARDRating;
-                int MoboRating = query3v2.First();
+                MoboRating = query3v2.First();
                 Rating = Rating + MoboRating;
+                oldMOBORating = MoboRating;
+                MoboRating = 0;
 
                 var query3v3 = from b in db.MOTHERBOARDs
                                where b.Id == SelectedMobo.Id
                                select b.MOTHERBOARDPrice;
-                int MoboPrice = query3v3.First();
+                MoboPrice = query3v3.First();
                 Price = Price + MoboPrice;
+                oldMOBOPrice = MoboPrice;
+                MoboPrice = 0;
             }
         }
 
         private void Heatsink_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             HEATSINK SelectedHeatSink = Heatsink_DROP.SelectedItem as HEATSINK;
+            int HeatSinkPrice;
+            int HeatSinkRating;
             if (SelectedHeatSink != null)
             {
+                if (SelectionChangeCounterHEAT == 1)
+                {
+                    Price = Price - oldHEATPrice;
+                    Rating = Rating - oldHEATRating;
+                }
+                SelectionChangeCounterHEAT = 1;
                 var query4v2 = from b in db.HEATSINKs
                                where b.Id == SelectedHeatSink.Id
                                select b.HEATSINKRating;
-                int HeatSinkRating = query4v2.First();
+                HeatSinkRating = query4v2.First();
                 Rating = Rating + HeatSinkRating;
+                oldHEATRating = HeatSinkRating;
+                HeatSinkRating = 0;
 
                 var query4v3 = from b in db.HEATSINKs
                                where b.Id == SelectedHeatSink.Id
                                select b.HEATSINKPrice;
-                int HeatSinkPrice = query4v3.First();
+                HeatSinkPrice = query4v3.First();
                 Price = Price + HeatSinkPrice;
+                oldHEATPrice = HeatSinkPrice;
+                HeatSinkPrice = 0;
             }
         }
 
         private void RAM_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             RAM SelectedRAM = RAM_DROP.SelectedItem as RAM;
+            int RAMRating;
+            int RAMPrice;
             if (SelectedRAM != null)
             {
+                if (SelectionChangeCounterRAM == 1)
+                {
+                    Price = Price - oldRAMPrice;
+                    Rating = Rating - oldRAMRating;
+                }
+                SelectionChangeCounterRAM = 1;
                 var query5v2 = from b in db.RAMs
                                where b.Id == SelectedRAM.Id
                                select b.RAMRating;
-                int RAMRating = query5v2.First();
+                RAMRating = query5v2.First();
                 Rating = Rating + RAMRating;
+                oldRAMRating = RAMRating;
+                RAMRating = 0;
 
                 var query5v3 = from b in db.RAMs
                                where b.Id == SelectedRAM.Id
                                select b.RAMPrice;
-                int RAMPrice = query5v3.First();
+                RAMPrice = query5v3.First();
                 Price = Price + RAMPrice;
+                oldRAMPrice = RAMPrice;
+                RAMPrice = 0;
             }
         }
 
         private void Storage1_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             STORAGE SelectedSage1 = Storage1_DROP.SelectedItem as STORAGE;
+            int SagePrice;
+            int SageRating;
             if (SelectedSage1 != null)
             {
+                if (SelectionChangeCounterSTORAGE1 == 1)
+                {
+                    Price = Price - oldSTO1Price;
+                    Rating = Rating - oldSTO1Rating;
+                }
+                SelectionChangeCounterSTORAGE1 = 1;
                 var query6v2 = from b in db.STORAGEs
                                where b.Id == SelectedSage1.Id
                                select b.STORAGERating;
-                int SageRating = query6v2.First();
+                SageRating = query6v2.First();
                 Rating = Rating + SageRating;
+                oldSTO1Rating = SageRating;
+                SageRating = 0;
 
                 var query6v3 = from b in db.STORAGEs
                                where b.Id == SelectedSage1.Id
                                select b.STORAGEPrice;
-                int SagePrice = query6v3.First();
+                SagePrice = query6v3.First();
                 Price = Price + SagePrice;
+                oldSTO1Price = SagePrice;
+                SagePrice = 0;
             }
         }
 
         private void Storage2_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             STORAGE SelectedSage2 = Storage2_DROP.SelectedItem as STORAGE;
+            int SagePrice;
+            int SageRating;
             if (SelectedSage2 != null)
             {
+                if (SelectionChangeCounterSTORAGE2 == 1)
+                {
+                    Price = Price - oldSTO2Price;
+                    Rating = Rating - oldSTO2Rating;
+                }
+                SelectionChangeCounterSTORAGE2 = 1;
                 var query6v2 = from b in db.STORAGEs
                                where b.Id == SelectedSage2.Id
                                select b.STORAGERating;
-                int SageRating = query6v2.First();
+                SageRating = query6v2.First();
                 Rating = Rating + SageRating;
+                oldSTO2Rating = SageRating;
+                SageRating = 0;
 
                 var query6v3 = from b in db.STORAGEs
                                where b.Id == SelectedSage2.Id
                                select b.STORAGEPrice;
-                int SagePrice = query6v3.First();
+                SagePrice = query6v3.First();
                 Price = Price + SagePrice;
+                oldSTO2Price = SagePrice;
+                SagePrice = 0;
             }
         }
 
         private void Storage3_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             STORAGE SelectedSage3 = Storage3_DROP.SelectedItem as STORAGE;
+            int SageRating;
+            int SagePrice;
             if (SelectedSage3 != null)
             {
+                if (SelectionChangeCounterSTORAGE3 == 1)
+                {
+                    Price = Price - oldSTO3Price;
+                    Rating = Rating - oldSTO3Rating;
+                }
+                SelectionChangeCounterSTORAGE3 = 1;
                 var query6v2 = from b in db.STORAGEs
                                where b.Id == SelectedSage3.Id
                                select b.STORAGERating;
-                int SageRating = query6v2.First();
+                SageRating = query6v2.First();
                 Rating = Rating + SageRating;
+                oldSTO3Rating = SageRating;
+                SageRating = 0;
 
                 var query6v3 = from b in db.STORAGEs
                                where b.Id == SelectedSage3.Id
                                select b.STORAGEPrice;
-                int SagePrice = query6v3.First();
+                SagePrice = query6v3.First();
                 Price = Price + SagePrice;
+                oldSTO3Price = SagePrice;
+                SagePrice = 0;
             }
         }
 
         private void PSU_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             POWERSUPPLy SelectedPSU = PSU_DROP.SelectedItem as POWERSUPPLy;
+            int PSUPrice;
+            int PSURating;
             if (SelectedPSU != null)
             {
+                if (SelectionChangeCounterPSU == 1)
+                {
+                    Price = Price - oldPSUPrice;
+                    Rating = Rating - oldPSURating;
+                }
+                SelectionChangeCounterPSU = 1;
                 var query7v2 = from b in db.POWERSUPPLies
                                where b.Id == SelectedPSU.Id
                                select b.POWERSUPPLYRating;
-                int PSURating = query7v2.First();
+                PSURating = query7v2.First();
                 Rating = Rating + PSURating;
+                oldPSURating = PSURating;
+                PSURating = 0;
 
                 var query7v3 = from b in db.POWERSUPPLies
                                where b.Id == SelectedPSU.Id
                                select b.POWERSUPPLYPrice;
-                int PSUPrice = query7v3.First();
+                PSUPrice = query7v3.First();
                 Price = Price + PSUPrice;
+                oldPSUPrice = PSUPrice;
+                PSUPrice = 0;
             }
         }
 
         private void OptionalFans_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             OPTIONAL SelectedFan = OptionalFans_DROP.SelectedItem as OPTIONAL;
+            int FanRating;
+            int FanPrice;
             if (SelectedFan != null)
             {
+                if (SelectionChangeCounterOPTIONALFAN == 1)
+                {
+                    Price = Price - oldOP1Price;
+                    Rating = Rating - oldOP1Rating;
+                }
+                SelectionChangeCounterOPTIONALFAN = 1;
                 var query9v2 = from b in db.OPTIONALs
                                where b.Id == SelectedFan.Id
                                select b.OPTIONALRating;
-                int FanRating = query9v2.First();
+                FanRating = query9v2.First();
                 Rating = Rating + FanRating;
+                oldOP1Rating = FanRating;
+                FanRating = 0;
 
                 var query9v3 = from b in db.OPTIONALs
                                where b.Id == SelectedFan.Id
                                select b.OPTIONALPrice;
-                int FanPrice = query9v3.First();
+                FanPrice = query9v3.First();
                 Price = Price + FanPrice;
+                oldOP1Price = FanPrice;
+                FanPrice = 0;
             }
         }
 
         private void OptionalLED_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             OPTIONAL SelectedLED = OptionalLED_DROP.SelectedItem as OPTIONAL;
+            int LEDPrice;
+            int LEDRating;
             if (SelectedLED != null)
             {
+                if (SelectionChangeCounterOPTIONALLED == 1)
+                {
+                    Price = Price - oldOP2Price;
+                    Rating = Rating - oldOP2Rating;
+                }
+                SelectionChangeCounterOPTIONALLED = 1;
                 var query9v2 = from b in db.OPTIONALs
                                where b.Id == SelectedLED.Id
                                select b.OPTIONALRating;
-                int LEDRating = query9v2.First();
+                LEDRating = query9v2.First();
                 Rating = Rating + LEDRating;
+                oldOP2Rating = LEDRating;
+                LEDRating = 0;
 
                 var query9v3 = from b in db.OPTIONALs
                                where b.Id == SelectedLED.Id
                                select b.OPTIONALPrice;
-                int LEDPrice = query9v3.First();
+                LEDPrice = query9v3.First();
                 Price = Price + LEDPrice;
+                oldOP2Price = LEDPrice;
+                LEDPrice = 0;
             }
         }
 
         private void BuildRatingTBLK_Loaded(object sender, RoutedEventArgs e)
         {
-            BuildRatingTBLK.Text = Convert.ToString(Rating);
+            double FinalRating = ((double)Rating / 115) * 100;
+            double TrimmedRating = Math.Round(FinalRating);
+            string RatingS = Convert.ToString(TrimmedRating);
+            BuildRatingTBLK.Text = " " + RatingS + "/100";
         }
 
         private void TextBlock_Loaded(object sender, RoutedEventArgs e)
