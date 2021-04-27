@@ -27,6 +27,7 @@ namespace PcPartHelpenator
     public partial class MainWindow : Window
     {
         PcHelpenatorEntities db;
+        System.Media.SoundPlayer Player = new System.Media.SoundPlayer();
         int Rating;
         int Price;
         public MainWindow()
@@ -36,13 +37,9 @@ namespace PcPartHelpenator
 
         public void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Uri uri = new Uri (@"sound/");
-            var player = new MediaPlayer();
-            player.Open(uri);
-            player.Play(); 
-            //SoundPlayer playSound = new SoundPlayer(Properties.Resources._03__The_Son_of_Flynn);
-           // playSound.PlayLooping();
-
+            Player.SoundLocation = "DankMusic.wav";
+            Player.PlayLooping();
+            
             db = new PcHelpenatorEntities();
             var query1 = from a in db.CPUs
                         select a;
