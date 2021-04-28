@@ -26,46 +26,46 @@ namespace PcPartHelpenator
      */
     public partial class MainWindow : Window
     {
-        PcHelpenatorEntities db;
-        System.Media.SoundPlayer Player = new System.Media.SoundPlayer();
-        int Rating;
-        int Price;
-        int SelectionChangeCounterCase = 0;
-        int oldCasePrice = 0;
-        int oldCaseRating = 0;
-        int SelectionChangeCounterCPU = 0;
-        int oldCPUPrice = 0;
-        int oldCPURating = 0;
-        int SelectionChangeCounterGPU = 0;
-        int oldGPUPrice = 0;
-        int oldGPURating = 0;
-        int SelectionChangeCounterMOBO = 0;
-        int oldMOBOPrice = 0;
-        int oldMOBORating = 0;
-        int SelectionChangeCounterHEAT = 0;
-        int oldHEATPrice = 0;
-        int oldHEATRating = 0;
-        int SelectionChangeCounterRAM = 0;
-        int oldRAMPrice = 0;
-        int oldRAMRating = 0;
-        int SelectionChangeCounterSTORAGE1 = 0;
-        int SelectionChangeCounterSTORAGE2 = 0;
-        int SelectionChangeCounterSTORAGE3 = 0;
-        int oldSTO1Price = 0;
-        int oldSTO1Rating = 0;
-        int oldSTO2Price = 0;
-        int oldSTO2Rating = 0;
-        int oldSTO3Price = 0;
-        int oldSTO3Rating = 0;
-        int SelectionChangeCounterPSU = 0;
-        int oldPSUPrice = 0;
-        int oldPSURating = 0;
-        int SelectionChangeCounterOPTIONALFAN = 0;
-        int oldOP1Price = 0;
-        int oldOP1Rating = 0;
-        int SelectionChangeCounterOPTIONALLED = 0;
-        int oldOP2Price = 0;
-        int oldOP2Rating = 0;
+        PcHelpenatorEntities db;                                                            //Getting the Database
+        System.Media.SoundPlayer Player = new System.Media.SoundPlayer();                   //Getting the media player to work in the code
+        int Rating;                                                                         //int Variable that will keep track of the Rating
+        int Price;                                                                          //int Variable that will keep track of the price
+        int SelectionChangeCounterCase = 0;                                                 //int Variable that will keep track of the times the case drop downs were used
+        int oldCasePrice = 0;                                                               //int Variable that will keep track of the Case Price before it was changed
+        int oldCaseRating = 0;                                                              //int Variable that will keep track of the Case Rating before it was changed
+        int SelectionChangeCounterCPU = 0;                                                  //int Variable that will keep track of the times the CPU drop downs were used
+        int oldCPUPrice = 0;                                                                //int Variable that will keep track of the CPU Price before it was changed
+        int oldCPURating = 0;                                                               //int Variable that will keep track of the CPU Rating before it was changed
+        int SelectionChangeCounterGPU = 0;                                                  //int Variable that will keep track of the times the GPU drop downs were used
+        int oldGPUPrice = 0;                                                                //int Variable that will keep track of the GPU price before it was changed
+        int oldGPURating = 0;                                                               //int Variable that will keep track of the GPU Rating before it was changed
+        int SelectionChangeCounterMOBO = 0;                                                 //int Variable that will keep track of the times the MOTHERBOARD drop downs were used
+        int oldMOBOPrice = 0;                                                               //int Variable that will keep track of the MotherBoard Price before it was changed
+        int oldMOBORating = 0;                                                              //int Variable that will keep track of the MotherBoard Rating before it was changed
+        int SelectionChangeCounterHEAT = 0;                                                 //int Variable that will keep track of the times the HEATSINK drop downs were used
+        int oldHEATPrice = 0;                                                               //int Variable that will keep track of the HeatSink Price before it was changed
+        int oldHEATRating = 0;                                                              //int Variable that will keep track of the HeatSink Rating before it was changed
+        int SelectionChangeCounterRAM = 0;                                                  //int Variable that will keep track of the times the RAM drop downs were used
+        int oldRAMPrice = 0;                                                                //int Variable that will keep track of the RAM Price before it was changed
+        int oldRAMRating = 0;                                                               //int Variable that will keep track of the RAM Rating before it was changed
+        int SelectionChangeCounterSTORAGE1 = 0;                                             //int Variable that will keep track of the times the STROAGE1 drop downs were used
+        int SelectionChangeCounterSTORAGE2 = 0;                                             //int Variable that will keep track of the times the STORAGE2 drop downs were used
+        int SelectionChangeCounterSTORAGE3 = 0;                                             //int Variable that will keep track of the times the STORAGE3 drop downs were used
+        int oldSTO1Price = 0;                                                               //int Variable that will keep track of the Storage 1 Price before it was changed
+        int oldSTO1Rating = 0;                                                              //int Variable that will keep track of the Storage 1 Rating before it was changed
+        int oldSTO2Price = 0;                                                               //int Variable that will keep track of the Storage 2 Price before it was changed
+        int oldSTO2Rating = 0;                                                              //int Variable that will keep track of the Storage 2 Rating before it was changed
+        int oldSTO3Price = 0;                                                               //int Variable that will keep track of the Storage 3 Price before it was changed
+        int oldSTO3Rating = 0;                                                              //int Variable that will keep track of the Storage 3 Rating before it was changed
+        int SelectionChangeCounterPSU = 0;                                                  //int Variable that will keep track of the times the POWERSUPPLY drop downs were used
+        int oldPSUPrice = 0;                                                                //int Variable that will keep track of the PSU Price before it was changed
+        int oldPSURating = 0;                                                               //int Variable that will keep track of the PSU Rating before it was changed
+        int SelectionChangeCounterOPTIONALFAN = 0;                                          //int Variable that will keep track of the times the FANS drop downs were used
+        int oldOP1Price = 0;                                                                //int Variable that will keep track of the FANS Price before it was changed
+        int oldOP1Rating = 0;                                                               //int Variable that will keep track of the FANS Rating before it was changed
+        int SelectionChangeCounterOPTIONALLED = 0;                                          //int Variable that will keep track of the times the LEDs drop downs were used
+        int oldOP2Price = 0;                                                                //int Variable that will keep track of the LEDs Price before it was changed
+        int oldOP2Rating = 0;                                                               //int Variable that will keep track of the LEDs Rating before it was changed
         public MainWindow()
         {
             InitializeComponent();
@@ -73,203 +73,210 @@ namespace PcPartHelpenator
 
         public void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Player.SoundLocation = "DankMusic.wav";
-            Player.PlayLooping();
+            Player.SoundLocation = "DankMusic.wav";                                         //When the WPF is loaded it will play the song that i put in the debug folder of the project
+            Player.PlayLooping();                                                           //This will keep the song looping for as long as your in the app
             
-            db = new PcHelpenatorEntities();
-            var query1 = from a in db.CPUs
+            db = new PcHelpenatorEntities();                                                //Declaring db as the database
+            var query1 = from a in db.CPUs                                                  //When loaded the CPU drop down will be instantly loaded as its the first one you need to use for the rest to work
                         select a;
             CPU_DROP.ItemsSource = query1.ToList();
  
         }
-        private void CaseStealth_DROP_DropDownOpened(object sender, EventArgs e)
+        private void CaseStealth_DROP_DropDownOpened(object sender, EventArgs e)            //When the Drop Down for the Stealth Case Selection is opened it will run this code
         {
-            db = new PcHelpenatorEntities();
-            MOTHERBOARD SelectedMobo = MOBO_DROP.SelectedItem as MOTHERBOARD;
-            if (SelectedMobo != null)
+            db = new PcHelpenatorEntities();                                                //Declaring db as the database
+            MOTHERBOARD SelectedMobo = MOBO_DROP.SelectedItem as MOTHERBOARD;               //Compatible is key when building a pc so the motherboard has to fit in the case so this will only be ran after a motherboard is picked otherwise it will be null
+            if (SelectedMobo != null)                                                       //As long as Motherboard has been picked
             {
-                string MoboType = SelectedMobo.MOTHERBOARDSize;
-                if (MoboType == "ATX")
+                string MoboType = SelectedMobo.MOTHERBOARDSize;                             //Setting the MotherboardSize data from the Database to a string
+                if (MoboType == "ATX")                                                      //If the MotherboardSize data is equal to "ATX" it will run this code
                 {
-                    var query8 = from a in db.Cases
+                    var query8 = from a in db.Cases                                         //Query to get the list of cases that are both "Stealth" and "ATX" to fit in with Compatiblity
                                  where a.CASELooks == "Stealth" && a.CASESize == "ATX"
                                  select a;
-                    CaseStealth_DROP.ItemsSource = query8.ToList();
+                    CaseStealth_DROP.ItemsSource = query8.ToList();                         //Setting the Data acuired as the item source of the drop down menu
                 }
-                else
+                else                                                                        //If its not equal to "ATX" it will run this code
                 {
                     var query8 = from a in db.Cases
-                                 where a.CASELooks == "Stealth"
+                                 where a.CASELooks == "Stealth"                             //Query to get the list of cases that are "Stealth" to fit in with Compatiblity
                                  select a;
-                    CaseStealth_DROP.ItemsSource = query8.ToList();
+                    CaseStealth_DROP.ItemsSource = query8.ToList();                         //Setting the Data acuired as the item source of the drop down menu
                 }
             }
-            CaseRGB_DROP.ItemsSource = null;
+            CaseRGB_DROP.ItemsSource = null;                                                //When this drop down menu is opened the other two drop down menus will be cleared as you can only have one case
             Airflow_DROP.ItemsSource = null;
         }
 
-        private void CaseRGB_DROP_DropDownOpened(object sender, EventArgs e)
+        private void CaseRGB_DROP_DropDownOpened(object sender, EventArgs e)                //When the Drop Down for the RGB Case Selection is opened it will run this code
         {
-            db = new PcHelpenatorEntities();
-            MOTHERBOARD SelectedMobo = MOBO_DROP.SelectedItem as MOTHERBOARD;
-            if (SelectedMobo != null)
+            db = new PcHelpenatorEntities();                                                //Declaring db as the database
+            MOTHERBOARD SelectedMobo = MOBO_DROP.SelectedItem as MOTHERBOARD;               //Compatible is key when building a pc so the motherboard has to fit in the case so this will only be ran after a motherboard is picked otherwise it will be null
+            if (SelectedMobo != null)                                                       //As long as Motherboard has been picked
             {
-                string MoboType = SelectedMobo.MOTHERBOARDSize;
-                if (MoboType == "ATX")
+                string MoboType = SelectedMobo.MOTHERBOARDSize;                             //Setting the MotherboardSize data from the Database to a string
+                if (MoboType == "ATX")                                                      //If the MotherboardSize data is equal to "ATX" it will run this code
                 {
                     var query8 = from a in db.Cases
-                                 where a.CASELooks == "RGB" && a.CASESize == "ATX"
+                                 where a.CASELooks == "RGB" && a.CASESize == "ATX"          //Query to get the list of cases that are both "RGB" and "ATX" to fit in with Compatiblity
                                  select a;
-                    CaseRGB_DROP.ItemsSource = query8.ToList();
+                    CaseRGB_DROP.ItemsSource = query8.ToList();                             //Setting the Data acuired as the item source of the drop down menu
                 }
-                else
+                else                                                                        //If its not equal to "ATX" it will run this code
                 {
-                    var query8 = from a in db.Cases
+                    var query8 = from a in db.Cases                                         //Query to get the list of cases that are "RGB" to fit in with Compatiblity
                                  where a.CASELooks == "RGB"
                                  select a;
-                    CaseRGB_DROP.ItemsSource = query8.ToList();
+                    CaseRGB_DROP.ItemsSource = query8.ToList();                             //Setting the Data acuired as the item source of the drop down menu
                 }
             }
-            CaseStealth_DROP.ItemsSource = null;
+            CaseStealth_DROP.ItemsSource = null;                                            //When this drop down menu is opened the other two drop down menus will be cleared as you can only have one case
             Airflow_DROP.ItemsSource = null;
         }
 
-        private void Airflow_DROP_DropDownOpened(object sender, EventArgs e)
+        private void Airflow_DROP_DropDownOpened(object sender, EventArgs e)                //When the Drop Down for the Airflow Case Selection is opened it will run this code
         {
-            db = new PcHelpenatorEntities();
-            MOTHERBOARD SelectedMobo = MOBO_DROP.SelectedItem as MOTHERBOARD;
-            if (SelectedMobo != null)
+            db = new PcHelpenatorEntities();                                                //Declaring db as the database
+            MOTHERBOARD SelectedMobo = MOBO_DROP.SelectedItem as MOTHERBOARD;               //Compatible is key when building a pc so the motherboard has to fit in the case so this will only be ran after a motherboard is picked otherwise it will be null
+            if (SelectedMobo != null)                                                       //As long as Motherboard has been picked
             {
-                string MoboType = SelectedMobo.MOTHERBOARDSize;
-                if (MoboType == "ATX")
+                string MoboType = SelectedMobo.MOTHERBOARDSize;                             //Setting the MotherboardSize data from the Database to a string
+                if (MoboType == "ATX")                                                      //If the MotherboardSize data is equal to "ATX" it will run this code
                 {
                     var query8 = from a in db.Cases
-                                 where a.CASELooks == "Airflow" && a.CASESize == "ATX"
+                                 where a.CASELooks == "Airflow" && a.CASESize == "ATX"      //Query to get the list of cases that are both "Airflow" and "ATX" to fit in with Compatiblity
                                  select a;
-                    Airflow_DROP.ItemsSource = query8.ToList();
+                    Airflow_DROP.ItemsSource = query8.ToList();                             //Setting the Data acuired as the item source of the drop down menu
                 }
-                else
+                else                                                                        //If its not equal to "ATX" it will run this code
                 {
-                    var query8 = from a in db.Cases
+                    var query8 = from a in db.Cases                                         //Query to get the list of cases that are "Airflow" to fit in with Compatiblity
                                  where a.CASELooks == "Airflow"
                                  select a;
-                    Airflow_DROP.ItemsSource = query8.ToList();
+                    Airflow_DROP.ItemsSource = query8.ToList();                             //Setting the Data acuired as the item source of the drop down menu
                 }
             }
-            CaseRGB_DROP.ItemsSource = null;
+            CaseRGB_DROP.ItemsSource = null;                                                //When this drop down menu is opened the other two drop down menus will be cleared as you can only have one case
             CaseStealth_DROP.ItemsSource = null;
         }
 
-        private void Airflow_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Airflow_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)      //When the item in the Drop box is selected initiate this code
         {
-            Case SelectedCase = Airflow_DROP.SelectedItem as Case;
-            int CaseRating;
-            int CasePrice;
-            if (SelectedCase != null)
+            Case SelectedCase = Airflow_DROP.SelectedItem as Case;                          //Selecting the items that was selected in the drop box
+            int CaseRating;                                                                 //Current Case Rating
+            int CasePrice;                                                                  //Current Case Price
+            if (SelectedCase != null)                                                       //Do the following code when there is a case selected
             {
-                if (SelectionChangeCounterCase == 1)
+                if (SelectionChangeCounterCase == 1)                                        //If the Counter that i declared at the top of the code is equal to 1 then do the following
                 {
-                    Rating = Rating - oldCaseRating;
-                    Price = Price - oldCasePrice;
+                    Rating = Rating - oldCaseRating;                                        //Take the Rating of the item that was prevousily selected and take it from the rating 
+                    Price = Price - oldCasePrice;                                           //Take the Price of the item that was prevousily selected and take it from the Price
                 }
-                SelectionChangeCounterCase = 1;
-                var query8v2 = from b in db.Cases
+                SelectionChangeCounterCase = 1;                                             //Setting the Counter too 1 so that any change to the case you select will not effect the rating or price 
+                var query8v2 = from b in db.Cases                                           //This is a query to get the matching image of the case selected in the drop down menu
                                where b.Id == SelectedCase.Id
                                select b;
-                PCImageLBX.ItemsSource = query8v2.ToList();
+                PCImageLBX.ItemsSource = query8v2.ToList();                                 //Assigning that image to list box
 
-                var query8v3 = from b in db.Cases
+                var query8v3 = from b in db.Cases                                           //Getting the Rating of the selected Case
                                where b.Id == SelectedCase.Id
                                select b.CASERating;
                 CaseRating = query8v3.First();
-                Rating = Rating + CaseRating;
-                oldCaseRating = CaseRating;
-                CaseRating = 0;
+                Rating = Rating + CaseRating;                                               //Adding the rating to the overall rating
+                oldCaseRating = CaseRating;                                                 //Keeping a copy of that rating incase the user changes there mind about the case
+                CaseRating = 0;                                                             //Setting the case rating back to 0 after all the rating code has been ran
 
-                var query8v4 = from b in db.Cases
+                var query8v4 = from b in db.Cases                                           //Getting the price of the selected case
                                where b.Id == SelectedCase.Id
                                select b.CASEPrice;
                 CasePrice = query8v4.First();
-                Price = Price + CasePrice;
-                oldCasePrice = CasePrice;
-                CasePrice = 0;
+                Price = Price + CasePrice;                                                  //Adding the price to the overall price
+                oldCasePrice = CasePrice;                                                   //Keeping a copy of the Price incase user changes their mind
+                CasePrice = 0;                                                              //Setting the price back to 0 so it can be run again if user changes their mind
             }
         }
 
-        private void CaseStealth_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CaseStealth_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)  //When the item in the Drop box is selected initiate this code
         {
-            Case SelectedCase = CaseStealth_DROP.SelectedItem as Case;
-            int CaseRating;
-            int CasePrice;
-            if (SelectedCase != null)
+            Case SelectedCase = CaseStealth_DROP.SelectedItem as Case;                      //Selecting the items that was selected in the drop box
+            int CaseRating;                                                                 //Current Case Rating
+            int CasePrice;                                                                  //Current Case Price
+            if (SelectedCase != null)                                                       //Do the following code when there is a case selected
             {
-                if (SelectionChangeCounterCase == 1)
+                if (SelectionChangeCounterCase == 1)                                        //If the Counter that i declared at the top of the code is equal to 1 then do the following
                 {
-                    Rating = Rating - oldCaseRating;
-                    Price = Price - oldCasePrice;
+                    Rating = Rating - oldCaseRating;                                        //Take the Rating of the item that was prevousily selected and take it from hte rating 
+                    Price = Price - oldCasePrice;                                           //Take the Price of the item that was prevousily selected and take it from the Price
                 }
-                SelectionChangeCounterCase = 1;
-                var query8v2 = from b in db.Cases
+                SelectionChangeCounterCase = 1;                                             //Setting the Counter too 1 so that any change to the case you select will not effect the rating or price 
+                var query8v2 = from b in db.Cases                                           //This is a query to get the matching image of the case selected in the drop down menu
                                where b.Id == SelectedCase.Id
                                select b;
-                PCImageLBX.ItemsSource = query8v2.ToList();
+                PCImageLBX.ItemsSource = query8v2.ToList();                                 //Assigning that image to list box
 
-                var query8v3 = from b in db.Cases
+                var query8v3 = from b in db.Cases                                           //Getting the Rating of the selected Case
+                               where b.Id == SelectedCase.Id
+                               select b.CASERating;
+                CaseRating = query8v3.First();                                                  
+                Rating = Rating + CaseRating;                                               //Adding the rating to the overall rating
+                oldCaseRating = CaseRating;                                                 //Keeping a copy of that rating incase the user changes there mind about the case
+                CaseRating = 0;                                                             //Setting the case rating back to 0 after all the rating code has been ran
+
+                var query8v4 = from b in db.Cases                                           //Getting the price of the selected case
+                               where b.Id == SelectedCase.Id
+                               select b.CASEPrice;
+                CasePrice = query8v4.First();
+                Price = Price + CasePrice;                                                  //Adding the price to the overall price
+                oldCasePrice = CasePrice;                                                   //Keeping a copy of the Price incase user changes their mind
+                CasePrice = 0;                                                              //Setting the price back to 0 so it can be run again if user changes their mind
+            }
+        }
+
+        private void CaseRGB_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)  //When the item in the Drop box is selected initiate this code
+        {
+            Case SelectedCase = CaseRGB_DROP.SelectedItem as Case;                          //Selecting the items that was selected in the drop box
+            int CaseRating;                                                                 //Current Case Rating
+            int CasePrice;                                                                  //Current Case Price
+            if (SelectedCase != null)                                                       //Do the following code when there is a case selected
+            {
+                if (SelectionChangeCounterCase == 1)                                        //If the Counter that i declared at the top of the code is equal to 1 then do the following
+                {
+                    Rating = Rating - oldCaseRating;                                        //Take the Rating of the item that was prevousily selected and take it from hte rating 
+                    Price = Price - oldCasePrice;                                           //Take the Price of the item that was prevousily selected and take it from the Price
+                }
+                SelectionChangeCounterCase = 1;                                             //Setting the Counter too 1 so that any change to the case you select will not effect the rating or price 
+                var query8v2 = from b in db.Cases                                           //This is a query to get the matching image of the case selected in the drop down menu
+                               where b.Id == SelectedCase.Id
+                               select b;
+                PCImageLBX.ItemsSource = query8v2.ToList();                                 //Assigning that image to list box
+
+                var query8v3 = from b in db.Cases                                           //Getting the Rating of the selected Case
                                where b.Id == SelectedCase.Id
                                select b.CASERating;
                 CaseRating = query8v3.First();
-                Rating = Rating + CaseRating;
-                oldCaseRating = CaseRating;
-                CaseRating = 0;
+                Rating = Rating + CaseRating;                                               //Adding the rating to the overall rating
+                oldCaseRating = CaseRating;                                                 //Keeping a copy of that rating incase the user changes there mind about the case
+                CaseRating = 0;                                                             //Setting the case rating back to 0 after all the rating code has been ran
 
-                var query8v4 = from b in db.Cases
+                var query8v4 = from b in db.Cases                                           //Getting the price of the selected case
                                where b.Id == SelectedCase.Id
                                select b.CASEPrice;
                 CasePrice = query8v4.First();
-                Price = Price + CasePrice;
-                oldCasePrice = CasePrice;
-                CasePrice = 0;
+                Price = Price + CasePrice;                                                  //Adding the price to the overall price
+                oldCasePrice = CasePrice;                                                   //Keeping a copy of the Price incase user changes their mind
+                CasePrice = 0;                                                              //Setting the price back to 0 so it can be run again if user changes their mind
             }
         }
 
-        private void CaseRGB_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void RecPriceTBLK_Loaded(object sender, RoutedEventArgs e)                  //When the text box is loaded do the following
         {
-            Case SelectedCase = CaseRGB_DROP.SelectedItem as Case;
-            int CaseRating;
-            int CasePrice;
-            if (SelectedCase != null)
+            if (Price == 420)
             {
-                if (SelectionChangeCounterCase == 1)
-                {
-                    Rating = Rating - oldCaseRating;
-                    Price = Price - oldCasePrice;
-                }
-                SelectionChangeCounterCase = 1;
-                var query8v2 = from b in db.Cases
-                               where b.Id == SelectedCase.Id
-                               select b;
-                PCImageLBX.ItemsSource = query8v2.ToList();
-
-                var query8v3 = from b in db.Cases
-                               where b.Id == SelectedCase.Id
-                               select b.CASERating;
-                CaseRating = query8v3.First();
-                Rating = Rating + CaseRating;
-                oldCaseRating = CaseRating;
-                CaseRating = 0;
-
-                var query8v4 = from b in db.Cases
-                               where b.Id == SelectedCase.Id
-                               select b.CASEPrice;
-                CasePrice = query8v4.First();
-                Price = Price + CasePrice;
-                oldCasePrice = CasePrice;
-                CasePrice = 0;
+                Random rnd = new Random();
+                int randomNum = rnd.Next(421);
+                string RandomNumberS = Convert.ToString(randomNum);
+                RANDOEASTEREGG.Text = " " + RandomNumberS + " NOICEE!!!";
             }
-        }
-
-        private void RecPriceTBLK_Loaded(object sender, RoutedEventArgs e)
-        {
             RecPriceTBLK.Text = Convert.ToString(Price);
         }
 
@@ -283,7 +290,7 @@ namespace PcPartHelpenator
 
         private void MOBO_DROP_DropDownOpened(object sender, EventArgs e)
         {
-            db = new PcHelpenatorEntities();
+            db = new PcHelpenatorEntities();                                        //Declaring db as the database
             CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
             if (SelectedCPU != null)
             {
@@ -307,7 +314,7 @@ namespace PcPartHelpenator
 
         private void OptionalFans_DROP_DropDownOpened(object sender, EventArgs e)
         {
-            db = new PcHelpenatorEntities();
+            db = new PcHelpenatorEntities();                                    //Declaring db as the database
             var query9 = from a in db.OPTIONALs
                          where a.OPTIONALType.Equals("FANS")
                          select a;
@@ -325,7 +332,7 @@ namespace PcPartHelpenator
 
         private void Heatsink_DROP_DropDownOpened(object sender, EventArgs e)
         {
-            db = new PcHelpenatorEntities();
+            db = new PcHelpenatorEntities();                                    //Declaring db as the database
             CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
             if (SelectedCPU != null)
             {
@@ -348,7 +355,7 @@ namespace PcPartHelpenator
 
         private void RAM_DROP_DropDownOpened(object sender, EventArgs e)
         {
-            db = new PcHelpenatorEntities();
+            db = new PcHelpenatorEntities();                                    //Declaring db as the database
             MOTHERBOARD SelectedMobo = MOBO_DROP.SelectedItem as MOTHERBOARD;
             if (SelectedMobo != null)
             {
@@ -371,7 +378,7 @@ namespace PcPartHelpenator
 
         private void Storage1_DROP_DropDownOpened(object sender, EventArgs e)
         {
-            db = new PcHelpenatorEntities();
+            db = new PcHelpenatorEntities();                                    //Declaring db as the database
             var query6 = from a in db.STORAGEs
                          select a;
             Storage1_DROP.ItemsSource = query6.ToList();
@@ -379,7 +386,7 @@ namespace PcPartHelpenator
 
         private void Storage2_DROP_DropDownOpened(object sender, EventArgs e)
         {
-            db = new PcHelpenatorEntities();
+            db = new PcHelpenatorEntities();                                    //Declaring db as the database
             var query6 = from a in db.STORAGEs
                          select a;
             Storage2_DROP.ItemsSource = query6.ToList();
@@ -387,7 +394,7 @@ namespace PcPartHelpenator
 
         private void Storage3_DROP_DropDownOpened(object sender, EventArgs e)
         {
-            db = new PcHelpenatorEntities();
+            db = new PcHelpenatorEntities();                                    //Declaring db as the database
             var query6 = from a in db.STORAGEs
                          select a;
             Storage3_DROP.ItemsSource = query6.ToList();
@@ -396,7 +403,7 @@ namespace PcPartHelpenator
         private void PSU_DROP_DropDownOpened(object sender, EventArgs e)
         {
             
-            db = new PcHelpenatorEntities();
+            db = new PcHelpenatorEntities();                                    //Declaring db as the database
             CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
             GPU SelectedGPU = GPU_DROP.SelectedItem as GPU;
             int PCWatts = SelectedCPU.CPUWatts + SelectedGPU.GPUWatts + 250;
