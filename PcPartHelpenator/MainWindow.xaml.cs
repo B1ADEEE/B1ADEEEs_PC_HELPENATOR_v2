@@ -270,147 +270,147 @@ namespace PcPartHelpenator
 
         private void RecPriceTBLK_Loaded(object sender, RoutedEventArgs e)                  //When the text box is loaded do the following
         {
-            if (Price == 420)
+            if (Price == 420)                                                               //if the price is equal to 420 do the following
             {
-                Random rnd = new Random();
-                int randomNum = rnd.Next(421);
-                string RandomNumberS = Convert.ToString(randomNum);
-                RANDOEASTEREGG.Text = " " + RandomNumberS + " NOICEE!!!";
+                Random rnd = new Random();                                                  //Creats list of random numbers
+                int randomNum = rnd.Next(421);                                              //Getting a random Number bettween 0 and 420
+                string RandomNumberS = Convert.ToString(randomNum);                         //Converting the number to a string
+                RANDOEASTEREGG.Text = " " + RandomNumberS + " NOICEE!!!";                   //Filling in the textbox with a random number and text (EASTER EGG)
             }
-            RecPriceTBLK.Text = Convert.ToString(Price);
+            RecPriceTBLK.Text = Convert.ToString(Price);                                    //The price of the PC into the text box
         }
 
-        private void GPU_DROP_DropDownOpened(object sender, EventArgs e)
+        private void GPU_DROP_DropDownOpened(object sender, EventArgs e)                    //When the Drop Down for the GPU is opened it will run this code
         {
-            db = new PcHelpenatorEntities();
+            db = new PcHelpenatorEntities();                                                //Declaring db as the database
             var query2 = from a in db.GPUs
                          select a;
-            GPU_DROP.ItemsSource = query2.ToList();
+            GPU_DROP.ItemsSource = query2.ToList();                                         //Getting all the GPUs and putting them in the drop down box as they are all compatible 
         }
 
-        private void MOBO_DROP_DropDownOpened(object sender, EventArgs e)
+        private void MOBO_DROP_DropDownOpened(object sender, EventArgs e)                   //When the Drop Down for the MotherBoard is opened it will run this code
         {
-            db = new PcHelpenatorEntities();                                        //Declaring db as the database
-            CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
-            if (SelectedCPU != null)
+            db = new PcHelpenatorEntities();                                                //Declaring db as the database
+            CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;                                 //Compatible is key when building a pc so the right CPU has to be with the right Motherboard so only compatible motherboards will show for the CPU selected
+            if (SelectedCPU != null)                                                        //Do the following code when there is a CPU selected
             {
-                string CpuType = SelectedCPU.CPUSocketType;
-                if (CpuType == "LGA 1200")
+                string CpuType = SelectedCPU.CPUSocketType;                                 //Getting the socket type of the selected CPU
+                if (CpuType == "LGA 1200")                                                  //If CPUType is equal to LGA 1200 do the following
                 {
-                    var query3 = from a in db.MOTHERBOARDs
+                    var query3 = from a in db.MOTHERBOARDs                                  //Query to get the right motherboards from the database
                                  where a.MOTHERBOARDSocke == "LGA 1200"
                                  select a;
-                    MOBO_DROP.ItemsSource = query3.ToList();
+                    MOBO_DROP.ItemsSource = query3.ToList();                                //Putting those motherboards in the drop down box
                 }
-                else
+                else                                                                        //If its anything other than LGA 1200 do the following code
                 {
-                    var query3 = from a in db.MOTHERBOARDs
+                    var query3 = from a in db.MOTHERBOARDs                                  //Query to get the right motherboards from the database
                                  where a.MOTHERBOARDSocke == "AM4"
                                  select a;
-                    MOBO_DROP.ItemsSource = query3.ToList();
+                    MOBO_DROP.ItemsSource = query3.ToList();                                //Putting those motherboards in the drop down box
                 }
             }
         }
 
-        private void OptionalFans_DROP_DropDownOpened(object sender, EventArgs e)
+        private void OptionalFans_DROP_DropDownOpened(object sender, EventArgs e)           //When the Drop Down for the Fans is opened it will run this code
         {
-            db = new PcHelpenatorEntities();                                    //Declaring db as the database
-            var query9 = from a in db.OPTIONALs
+            db = new PcHelpenatorEntities();                                                //Declaring db as the database
+            var query9 = from a in db.OPTIONALs                                             //Query to get the right Items from the database
                          where a.OPTIONALType.Equals("FANS")
                          select a;
-            OptionalFans_DROP.ItemsSource = query9.ToList();
+            OptionalFans_DROP.ItemsSource = query9.ToList();                                //Putting the FANs in the drop down box
         }
 
-        private void OptionalLED_DROP_DropDownOpened(object sender, EventArgs e)
+        private void OptionalLED_DROP_DropDownOpened(object sender, EventArgs e)            //When the Drop Down for the LEDs is opened it will run this code
         {
-            db = new PcHelpenatorEntities();
-            var query9 = from a in db.OPTIONALs
+            db = new PcHelpenatorEntities();                                                //Declaring db as the database
+            var query9 = from a in db.OPTIONALs                                             //Query to get the right Items from the database
                          where a.OPTIONALType.Equals("LED")
                          select a;
-            OptionalLED_DROP.ItemsSource = query9.ToList();
+            OptionalLED_DROP.ItemsSource = query9.ToList();                                 //Putting the LEDs in the drop down box
         }
 
-        private void Heatsink_DROP_DropDownOpened(object sender, EventArgs e)
+        private void Heatsink_DROP_DropDownOpened(object sender, EventArgs e)               //When the Drop Down for the HeatSink is opened it will run this code
         {
-            db = new PcHelpenatorEntities();                                    //Declaring db as the database
+            db = new PcHelpenatorEntities();                                                //Declaring db as the database
             CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
-            if (SelectedCPU != null)
+            if (SelectedCPU != null)                                                        //Do the following code when there is a CPU selected
             {
-                string CpuType = SelectedCPU.CPUHeatsink;
-                if (CpuType == "NO")
+                string CpuType = SelectedCPU.CPUHeatsink;                                   //Getting the Heatsink type of the selected CPU
+                if (CpuType == "NO")                                                        //If CPU heatSink equals NO do the following code
                 {
-                    var query4 = from a in db.HEATSINKs
+                    var query4 = from a in db.HEATSINKs                                     //Query to get the Heatsinks that equal Any
                                  where a.HEATSINKSocket == "Any"
                                  select a;
-                    Heatsink_DROP.ItemsSource = query4.ToList();
+                    Heatsink_DROP.ItemsSource = query4.ToList();                            //Putting the HeatSink in the drop down box
                 }
-                else
+                else                                                                        //if its anything other than Any do the following
                 {
-                    var query4 = from a in db.HEATSINKs
+                    var query4 = from a in db.HEATSINKs                                     //Getting all the heatsinks as the rest are all compatible
                                  select a;
-                    Heatsink_DROP.ItemsSource = query4.ToList();
+                    Heatsink_DROP.ItemsSource = query4.ToList();                            //Putting the HeatSink in the drop down box
                 }
             }
         }
 
-        private void RAM_DROP_DropDownOpened(object sender, EventArgs e)
+        private void RAM_DROP_DropDownOpened(object sender, EventArgs e)                    //When the Drop Down for the RAM is opened it will run this code
         {
-            db = new PcHelpenatorEntities();                                    //Declaring db as the database
+            db = new PcHelpenatorEntities();                                                //Declaring db as the database
             MOTHERBOARD SelectedMobo = MOBO_DROP.SelectedItem as MOTHERBOARD;
-            if (SelectedMobo != null)
+            if (SelectedMobo != null)                                                       //Do the following code when there is a Motherboard is selected
             {
-                int maxRam = SelectedMobo.MOTHERBOARDMaxRam;
-                if (maxRam == 16)
+                int maxRam = SelectedMobo.MOTHERBOARDMaxRam;                                //Getting the MaxRam of the selected Motherboard 
+                if (maxRam == 16)                                                           //if MaxRam is equal to 16 do the following code
                 {
-                    var query5 = from a in db.RAMs
+                    var query5 = from a in db.RAMs                                          //Get the RamSize that is equal to both 16 and 8
                                  where a.RAMSize == 16 || a.RAMSize == 8
                                  select a;
-                    RAM_DROP.ItemsSource = query5.ToList();
+                    RAM_DROP.ItemsSource = query5.ToList();                                 //Putting the RAM in the drop down box
                 }
-                else
+                else                                                                        //If its anything other than 16 do the following
                 {
-                    var query5 = from a in db.RAMs
+                    var query5 = from a in db.RAMs                                          //Gets all the ram as it is all compatible then.
                                  select a;
-                    RAM_DROP.ItemsSource = query5.ToList();
+                    RAM_DROP.ItemsSource = query5.ToList();                                 //Putting the RAM in the drop down box
                 }
             }
         }
 
-        private void Storage1_DROP_DropDownOpened(object sender, EventArgs e)
+        private void Storage1_DROP_DropDownOpened(object sender, EventArgs e)           //When the Drop Down for the Storage 1 is opened it will run this code
         {
-            db = new PcHelpenatorEntities();                                    //Declaring db as the database
-            var query6 = from a in db.STORAGEs
+            db = new PcHelpenatorEntities();                                            //Declaring db as the database
+            var query6 = from a in db.STORAGEs                                          //Query to get the right Items from the database
                          select a;
-            Storage1_DROP.ItemsSource = query6.ToList();
+            Storage1_DROP.ItemsSource = query6.ToList();                                //Putting Storage in the drop down box
         }
 
-        private void Storage2_DROP_DropDownOpened(object sender, EventArgs e)
+        private void Storage2_DROP_DropDownOpened(object sender, EventArgs e)           //When the Drop Down for the Storage 2 is opened it will run this code
         {
-            db = new PcHelpenatorEntities();                                    //Declaring db as the database
-            var query6 = from a in db.STORAGEs
+            db = new PcHelpenatorEntities();                                            //Declaring db as the database
+            var query6 = from a in db.STORAGEs                                          //Query to get the right Items from the database
                          select a;
-            Storage2_DROP.ItemsSource = query6.ToList();
+            Storage2_DROP.ItemsSource = query6.ToList();                                //Putting Storage in the drop down box
         }
 
-        private void Storage3_DROP_DropDownOpened(object sender, EventArgs e)
+        private void Storage3_DROP_DropDownOpened(object sender, EventArgs e)           //When the Drop Down for the Storage 3 is opened it will run this code
         {
-            db = new PcHelpenatorEntities();                                    //Declaring db as the database
-            var query6 = from a in db.STORAGEs
+            db = new PcHelpenatorEntities();                                            //Declaring db as the database
+            var query6 = from a in db.STORAGEs                                          //Query to get the right Items from the database
                          select a;
-            Storage3_DROP.ItemsSource = query6.ToList();
+            Storage3_DROP.ItemsSource = query6.ToList();                                //Putting Storage in the drop down box
         }
 
-        private void PSU_DROP_DropDownOpened(object sender, EventArgs e)
+        private void PSU_DROP_DropDownOpened(object sender, EventArgs e)                //When the Drop Down for the PSU is opened it will run this code
         {
             
-            db = new PcHelpenatorEntities();                                    //Declaring db as the database
-            CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
-            GPU SelectedGPU = GPU_DROP.SelectedItem as GPU;
-            int PCWatts = SelectedCPU.CPUWatts + SelectedGPU.GPUWatts + 250;
-            var query7 = from a in db.POWERSUPPLies
+            db = new PcHelpenatorEntities();                                            //Declaring db as the database
+            CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;                             //Getting the Selected CPU from the selection box
+            GPU SelectedGPU = GPU_DROP.SelectedItem as GPU;                             //Getting the Selected GPU from the selection box
+            int PCWatts = SelectedCPU.CPUWatts + SelectedGPU.GPUWatts + 250;            //Adding the Watts of the GPU and CPU and adding 200 to give a safe overhead
+            var query7 = from a in db.POWERSUPPLies                                     //Query to get power supplies that are more then the PCWatts
                          where a.POWERSUPPLYWatts >= PCWatts
                          select a;
-            PSU_DROP.ItemsSource = query7.ToList();
+            PSU_DROP.ItemsSource = query7.ToList();                                     //Putting those PSUs in the drop down box
         }
 
         private void CPU_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -418,7 +418,7 @@ namespace PcPartHelpenator
             CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
             int CPURating;
             int CPUPrice;
-            if (SelectedCPU != null)
+            if (SelectedCPU != null)                                            
             {
                 if (SelectionChangeCounterCPU == 1)
                 {

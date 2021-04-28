@@ -125,7 +125,7 @@
                 <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" Margin="10" TextWrapping="Wrap" Text="€" VerticalAlignment="Top" FontSize="18" Width="184" Foreground="#FF0B00F7" FontFamily="Unispace" Loaded="TextBlock_Loaded"/>
                 <TextBlock HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1" Margin="10" TextWrapping="Wrap" Text="RECOMMENDED PRICE:" VerticalAlignment="Top" FontSize="16" Width="184" Foreground="#FF0B00F7" FontFamily="Unispace"/>
                 <TextBlock x:Name="BuildRatingTBLK" HorizontalAlignment="Center" Grid.Row="6" Grid.Column="1" Margin="10"  VerticalAlignment="Top" FontSize="18" Width="184" Foreground="#FF0B00F7" FontFamily="Unispace" Loaded="BuildRatingTBLK_Loaded"/>
-                <TextBlock x:Name="RANDOEASTEREGG" HorizontalAlignment="Center" Grid.Row="7" Grid.Column="1" Margin="25"  VerticalAlignment="Top" FontSize="22" Width="184" Foreground="#FF0B00F7" />
+                <TextBlock x:Name="RANDOEASTEREGG" HorizontalAlignment="Center" Grid.Row="7" Grid.Column="1" Margin="25"  VerticalAlignment="Top" FontSize="22" Width="184" Foreground="#FF0B00F7" FontFamily="Unispace"/>
                 <ListBox ItemTemplate="{StaticResource LBXPcImage}" x:Name="PCImageLBX" Grid.Column="0" Grid.RowSpan="8" HorizontalAlignment="Center" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="40"  Width="350" Height="300">
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="ListBoxItem">
