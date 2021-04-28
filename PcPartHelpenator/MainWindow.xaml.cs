@@ -275,7 +275,7 @@ namespace PcPartHelpenator
                 Random rnd = new Random();                                                  //Creats list of random numbers
                 int randomNum = rnd.Next(421);                                              //Getting a random Number bettween 0 and 420
                 string RandomNumberS = Convert.ToString(randomNum);                         //Converting the number to a string
-                RANDOEASTEREGG.Text = " " + RandomNumberS + " NOICEE!!!";                   //Filling in the textbox with a random number and text (EASTER EGG)
+                RANDOEASTEREGG.Text = " GAMER RATING: " + RandomNumberS ;                   //Filling in the textbox with a random number and text (EASTER EGG)
             }
             RecPriceTBLK.Text = Convert.ToString(Price);                                    //The price of the PC into the text box
         }
