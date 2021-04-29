@@ -376,396 +376,396 @@ namespace PcPartHelpenator
             }
         }
 
-        private void Storage1_DROP_DropDownOpened(object sender, EventArgs e)           //When the Drop Down for the Storage 1 is opened it will run this code
+        private void Storage1_DROP_DropDownOpened(object sender, EventArgs e)               //When the Drop Down for the Storage 1 is opened it will run this code
         {
-            db = new PcHelpenatorEntities();                                            //Declaring db as the database
-            var query6 = from a in db.STORAGEs                                          //Query to get the right Items from the database
+            db = new PcHelpenatorEntities();                                                //Declaring db as the database
+            var query6 = from a in db.STORAGEs                                              //Query to get the right Items from the database
                          select a;
-            Storage1_DROP.ItemsSource = query6.ToList();                                //Putting Storage in the drop down box
+            Storage1_DROP.ItemsSource = query6.ToList();                                    //Putting Storage in the drop down box
         }
 
-        private void Storage2_DROP_DropDownOpened(object sender, EventArgs e)           //When the Drop Down for the Storage 2 is opened it will run this code
+        private void Storage2_DROP_DropDownOpened(object sender, EventArgs e)               //When the Drop Down for the Storage 2 is opened it will run this code
         {
-            db = new PcHelpenatorEntities();                                            //Declaring db as the database
-            var query6 = from a in db.STORAGEs                                          //Query to get the right Items from the database
+            db = new PcHelpenatorEntities();                                                //Declaring db as the database
+            var query6 = from a in db.STORAGEs                                              //Query to get the right Items from the database
                          select a;
-            Storage2_DROP.ItemsSource = query6.ToList();                                //Putting Storage in the drop down box
+            Storage2_DROP.ItemsSource = query6.ToList();                                    //Putting Storage in the drop down box
         }
 
-        private void Storage3_DROP_DropDownOpened(object sender, EventArgs e)           //When the Drop Down for the Storage 3 is opened it will run this code
+        private void Storage3_DROP_DropDownOpened(object sender, EventArgs e)               //When the Drop Down for the Storage 3 is opened it will run this code
         {
-            db = new PcHelpenatorEntities();                                            //Declaring db as the database
-            var query6 = from a in db.STORAGEs                                          //Query to get the right Items from the database
+            db = new PcHelpenatorEntities();                                                //Declaring db as the database
+            var query6 = from a in db.STORAGEs                                              //Query to get the right Items from the database
                          select a;
-            Storage3_DROP.ItemsSource = query6.ToList();                                //Putting Storage in the drop down box
+            Storage3_DROP.ItemsSource = query6.ToList();                                    //Putting Storage in the drop down box
         }
 
-        private void PSU_DROP_DropDownOpened(object sender, EventArgs e)                //When the Drop Down for the PSU is opened it will run this code
+        private void PSU_DROP_DropDownOpened(object sender, EventArgs e)                    //When the Drop Down for the PSU is opened it will run this code
         {
             
-            db = new PcHelpenatorEntities();                                            //Declaring db as the database
-            CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;                             //Getting the Selected CPU from the selection box
-            GPU SelectedGPU = GPU_DROP.SelectedItem as GPU;                             //Getting the Selected GPU from the selection box
-            int PCWatts = SelectedCPU.CPUWatts + SelectedGPU.GPUWatts + 250;            //Adding the Watts of the GPU and CPU and adding 200 to give a safe overhead
-            var query7 = from a in db.POWERSUPPLies                                     //Query to get power supplies that are more then the PCWatts
+            db = new PcHelpenatorEntities();                                                //Declaring db as the database
+            CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;                                 //Getting the Selected CPU from the selection box
+            GPU SelectedGPU = GPU_DROP.SelectedItem as GPU;                                 //Getting the Selected GPU from the selection box
+            int PCWatts = SelectedCPU.CPUWatts + SelectedGPU.GPUWatts + 250;                //Adding the Watts of the GPU and CPU and adding 200 to give a safe overhead
+            var query7 = from a in db.POWERSUPPLies                                         //Query to get power supplies that are more then the PCWatts
                          where a.POWERSUPPLYWatts >= PCWatts
                          select a;
-            PSU_DROP.ItemsSource = query7.ToList();                                     //Putting those PSUs in the drop down box
+            PSU_DROP.ItemsSource = query7.ToList();                                         //Putting those PSUs in the drop down box
         }
 
-        private void CPU_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CPU_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)  //When the item in the Drop box is selected initiate this code
         {
-            CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;
-            int CPURating;
-            int CPUPrice;
-            if (SelectedCPU != null)                                            
+            CPU SelectedCPU = CPU_DROP.SelectedItem as CPU;                                 //Selecting the items that was selected in the drop box
+            int CPURating;                                                                  //Current CPU Rating
+            int CPUPrice;                                                                   //Current CPU Price
+            if (SelectedCPU != null)                                                        //If there is a selected cpu do the following code
             {
-                if (SelectionChangeCounterCPU == 1)
+                if (SelectionChangeCounterCPU == 1)                                         //If the counter is 1 ( meaning it has been changed before) run the following code
                 {
-                    Rating = Rating - oldCPURating;
-                    Price = Price - oldCPUPrice;
+                    Rating = Rating - oldCPURating;                                         //Take the prevously selected Rating from the overall Rating
+                    Price = Price - oldCPUPrice;                                            //Take the prevously selected price from the overall Price
                 }
-                SelectionChangeCounterCPU = 1;
-                var query1v2 = from b in db.CPUs
+                SelectionChangeCounterCPU = 1;                                              //setting the counter to one indicating this code has been ran before
+                var query1v2 = from b in db.CPUs                                            //Getting the Rating from the selected cpu using its id in order to get the rating
                                where b.Id == SelectedCPU.Id
                                select b.CPURating;
-                CPURating = query1v2.First();
-                Rating = Rating + CPURating;
-                oldCPURating = CPURating;
-                CPURating = 0;
+                CPURating = query1v2.First();                                               //Setting the Rating as an int in order to do calculations
+                Rating = Rating + CPURating;                                                //Adding the Rating to the overall Rating
+                oldCPURating = CPURating;                                                   //Making a backup of the Rating in the event a user changes there mind
+                CPURating = 0;                                                              //Setting the Rating back to 0 in case the user changes there mind
 
-                var query1v3 = from b in db.CPUs
+                var query1v3 = from b in db.CPUs                                            //Getting the Price of the selected CPU using its id to get the Price
                                where b.Id == SelectedCPU.Id
                                select b.CPUPrice;
-                CPUPrice = query1v3.First();
-                Price = Price + CPUPrice;
-                oldCPUPrice = CPUPrice;
-                CPUPrice = 0;
+                CPUPrice = query1v3.First();                                                //Setting the Price as an int in order to do calculations
+                Price = Price + CPUPrice;                                                   //Adding the Price to the overall Rating
+                oldCPUPrice = CPUPrice;                                                     //Making a backup of the Price in the event a user changes there mind
+                CPUPrice = 0;                                                               //Setting the Price back to 0 in case the user changes there mind
             }
         }
 
-        private void GPU_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void GPU_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)  //When the item in the Drop box is selected initiate this code
         {
-            GPU SelectedGPU = GPU_DROP.SelectedItem as GPU;
-            int GPURating;
-            int GPUPrice;
-            if (SelectedGPU != null)
+            GPU SelectedGPU = GPU_DROP.SelectedItem as GPU;                                 //Selecting the items that was selected in the drop box
+            int GPURating;                                                                  //Current GPU Rating
+            int GPUPrice;                                                                   //Current GPU Price
+            if (SelectedGPU != null)                                                        //If there is a selected GPU do the following code
             {
-                if (SelectionChangeCounterGPU == 1)
+                if (SelectionChangeCounterGPU == 1)                                         //If the counter is 1 ( meaning it has been changed before) run the following cod
                 {
-                    Price = Price - oldGPUPrice;
-                    Rating = Rating - oldGPURating;
+                    Price = Price - oldGPUPrice;                                            //Take the prevously selected price from the overall Price
+                    Rating = Rating - oldGPURating;                                         //Take the prevously selected Rating from the overall Rating
                 }
-                SelectionChangeCounterGPU = 1;
-                var query2v2 = from b in db.GPUs
+                SelectionChangeCounterGPU = 1;                                              //setting the counter to one indicating this code has been ran before
+                var query2v2 = from b in db.GPUs                                            //Getting the Rating from the selected GPU using its id in order to get the rating
                                where b.Id == SelectedGPU.Id
                                select b.GPURating;
-                GPURating = query2v2.First();
-                Rating = Rating + GPURating;
-                oldGPURating = GPURating;
-                GPURating = 0;
+                GPURating = query2v2.First();                                               //Setting the Rating as an int in order to do calculations
+                Rating = Rating + GPURating;                                                //Adding the Rating to the overall Rating
+                oldGPURating = GPURating;                                                   //Making a backup of the Rating in the event a user changes there mind
+                GPURating = 0;                                                              //Setting the Rating back to 0 in case the user changes there mind
 
-                var query2v3 = from b in db.GPUs
+                var query2v3 = from b in db.GPUs                                            //Getting the Price of the selected GPU using its id to get the Price
                                where b.Id == SelectedGPU.Id
                                select b.GPUPrice;
-                GPUPrice = query2v3.First();
-                Price = Price + GPUPrice;
-                oldGPUPrice = GPUPrice;
-                GPUPrice = 0;
+                GPUPrice = query2v3.First();                                                //Setting the Price as an int in order to do calculations
+                Price = Price + GPUPrice;                                                   //Adding the Price to the overall Rating
+                oldGPUPrice = GPUPrice;                                                     //Making a backup of the Price in the event a user changes there mind
+                GPUPrice = 0;                                                               //Setting the Price back to 0 in case the user changes there mind
             }
         }
 
-        private void MOBO_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void MOBO_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e) //When the item in the Drop box is selected initiate this code
         {
-            MOTHERBOARD SelectedMobo = MOBO_DROP.SelectedItem as MOTHERBOARD;
-            int MoboRating;
-            int MoboPrice;
-            if (SelectedMobo != null)
+            MOTHERBOARD SelectedMobo = MOBO_DROP.SelectedItem as MOTHERBOARD;               //Selecting the items that was selected in the drop box
+            int MoboRating;                                                                 //Current MotherBoard Rating
+            int MoboPrice;                                                                  //Current MotherBoard Price
+            if (SelectedMobo != null)                                                       //If there is a selected Motherboard do the following code
             {
-                if (SelectionChangeCounterMOBO == 1)
+                if (SelectionChangeCounterMOBO == 1)                                        //If the counter is 1 ( meaning it has been changed before) run the following cod
                 {
-                    Rating = Rating - oldMOBORating;
-                    Price = Price - oldMOBOPrice;
+                    Rating = Rating - oldMOBORating;                                        //Take the prevously selected Rating from the overall Rating
+                    Price = Price - oldMOBOPrice;                                           //Take the prevously selected price from the overall Price
                 }
-                SelectionChangeCounterMOBO = 1;
-                var query3v2 = from b in db.MOTHERBOARDs
+                SelectionChangeCounterMOBO = 1;                                             //setting the counter to one indicating this code has been ran before
+                var query3v2 = from b in db.MOTHERBOARDs                                    //Getting the Rating from the selected Motherboard using its id in order to get the rating
                                where b.Id == SelectedMobo.Id
                                select b.MOTHERBOARDRating;
-                MoboRating = query3v2.First();
-                Rating = Rating + MoboRating;
-                oldMOBORating = MoboRating;
-                MoboRating = 0;
+                MoboRating = query3v2.First();                                              //Setting the Rating as an int in order to do calculations
+                Rating = Rating + MoboRating;                                               //Adding the Rating to the overall Rating
+                oldMOBORating = MoboRating;                                                 //Making a backup of the Rating in the event a user changes there mind
+                MoboRating = 0;                                                             //Setting the Rating back to 0 in case the user changes there mind
 
-                var query3v3 = from b in db.MOTHERBOARDs
+                var query3v3 = from b in db.MOTHERBOARDs                                    //Getting the Price of the selected Motherboard using its id to get the Price
                                where b.Id == SelectedMobo.Id
                                select b.MOTHERBOARDPrice;
-                MoboPrice = query3v3.First();
-                Price = Price + MoboPrice;
-                oldMOBOPrice = MoboPrice;
-                MoboPrice = 0;
+                MoboPrice = query3v3.First();                                               //Setting the Price as an int in order to do calculations
+                Price = Price + MoboPrice;                                                  //Adding the Price to the overall Rating
+                oldMOBOPrice = MoboPrice;                                                   //Making a backup of the Price in the event a user changes there mind
+                MoboPrice = 0;                                                              //Setting the Price back to 0 in case the user changes there mind
             }
         }
 
-        private void Heatsink_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Heatsink_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e) //When the item in the Drop box is selected initiate this code
         {
-            HEATSINK SelectedHeatSink = Heatsink_DROP.SelectedItem as HEATSINK;
-            int HeatSinkPrice;
-            int HeatSinkRating;
-            if (SelectedHeatSink != null)
-            {
-                if (SelectionChangeCounterHEAT == 1)
+            HEATSINK SelectedHeatSink = Heatsink_DROP.SelectedItem as HEATSINK;             //Selecting the items that was selected in the drop box
+            int HeatSinkPrice;                                                              //Current HeatSink Price
+            int HeatSinkRating;                                                             //Current Heatsink Rating
+            if (SelectedHeatSink != null)                                                   //If there is a selected Heatsink do the following code
+            {   
+                if (SelectionChangeCounterHEAT == 1)                                        //If the counter is 1 ( meaning it has been changed before) run the following cod
                 {
-                    Price = Price - oldHEATPrice;
-                    Rating = Rating - oldHEATRating;
+                    Price = Price - oldHEATPrice;                                           //Take the prevously selected price from the overall Price
+                    Rating = Rating - oldHEATRating;                                        //Take the prevously selected Rating from the overall Rating
                 }
-                SelectionChangeCounterHEAT = 1;
-                var query4v2 = from b in db.HEATSINKs
+                SelectionChangeCounterHEAT = 1;                                             //setting the counter to one indicating this code has been ran before
+                var query4v2 = from b in db.HEATSINKs                                       //Getting the Rating from the selected Heatsink using its id in order to get the rating
                                where b.Id == SelectedHeatSink.Id
                                select b.HEATSINKRating;
-                HeatSinkRating = query4v2.First();
-                Rating = Rating + HeatSinkRating;
-                oldHEATRating = HeatSinkRating;
-                HeatSinkRating = 0;
+                HeatSinkRating = query4v2.First();                                          //Setting the Rating as an int in order to do calculations
+                Rating = Rating + HeatSinkRating;                                           //Adding the Rating to the overall Rating
+                oldHEATRating = HeatSinkRating;                                             //Making a backup of the Rating in the event a user changes there mind
+                HeatSinkRating = 0;                                                         //Setting the Rating back to 0 in case the user changes there mind
 
-                var query4v3 = from b in db.HEATSINKs
+                var query4v3 = from b in db.HEATSINKs                                       //Getting the Price of the selected HeatSink using its id to get the Price
                                where b.Id == SelectedHeatSink.Id
                                select b.HEATSINKPrice;
-                HeatSinkPrice = query4v3.First();
-                Price = Price + HeatSinkPrice;
-                oldHEATPrice = HeatSinkPrice;
-                HeatSinkPrice = 0;
+                HeatSinkPrice = query4v3.First();                                           //Setting the Price as an int in order to do calculations
+                Price = Price + HeatSinkPrice;                                              //Adding the Price to the overall Rating
+                oldHEATPrice = HeatSinkPrice;                                               //Making a backup of the Price in the event a user changes there mind
+                HeatSinkPrice = 0;                                                          //Setting the Price back to 0 in case the user changes there mind
             }
         }
 
-        private void RAM_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void RAM_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)  //When the item in the Drop box is selected initiate this code
         {
-            RAM SelectedRAM = RAM_DROP.SelectedItem as RAM;
-            int RAMRating;
-            int RAMPrice;
-            if (SelectedRAM != null)
+            RAM SelectedRAM = RAM_DROP.SelectedItem as RAM;                                 //Selecting the items that was selected in the drop box
+            int RAMRating;                                                                  //Current RAM Rating
+            int RAMPrice;                                                                   //Current RAM Price
+            if (SelectedRAM != null)                                                        //If there is a selected RAM do the following code
             {
-                if (SelectionChangeCounterRAM == 1)
+                if (SelectionChangeCounterRAM == 1)                                         //If the counter is 1 ( meaning it has been changed before) run the following cod
                 {
-                    Price = Price - oldRAMPrice;
-                    Rating = Rating - oldRAMRating;
+                    Price = Price - oldRAMPrice;                                            //Take the prevously selected price from the overall Price
+                    Rating = Rating - oldRAMRating;                                         //Take the prevously selected Rating from the overall Rating
                 }
-                SelectionChangeCounterRAM = 1;
-                var query5v2 = from b in db.RAMs
+                SelectionChangeCounterRAM = 1;                                              //setting the counter to one indicating this code has been ran before
+                var query5v2 = from b in db.RAMs                                            //Getting the Rating from the selected RAM using its id in order to get the rating
                                where b.Id == SelectedRAM.Id
                                select b.RAMRating;
-                RAMRating = query5v2.First();
-                Rating = Rating + RAMRating;
-                oldRAMRating = RAMRating;
-                RAMRating = 0;
+                RAMRating = query5v2.First();                                               //Setting the Rating as an int in order to do calculations
+                Rating = Rating + RAMRating;                                                //Adding the Rating to the overall Rating
+                oldRAMRating = RAMRating;                                                   //Making a backup of the Rating in the event a user changes there mind
+                RAMRating = 0;                                                              //Setting the Rating back to 0 in case the user changes there mind
 
-                var query5v3 = from b in db.RAMs
+                var query5v3 = from b in db.RAMs                                            //Getting the Price of the selected RAM using its id to get the Price
                                where b.Id == SelectedRAM.Id
                                select b.RAMPrice;
-                RAMPrice = query5v3.First();
-                Price = Price + RAMPrice;
-                oldRAMPrice = RAMPrice;
-                RAMPrice = 0;
+                RAMPrice = query5v3.First();                                                //Setting the Price as an int in order to do calculations
+                Price = Price + RAMPrice;                                                   //Adding the Price to the overall Rating
+                oldRAMPrice = RAMPrice;                                                     //Making a backup of the Price in the event a user changes there mind
+                RAMPrice = 0;                                                               //Setting the Price back to 0 in case the user changes there mind
             }
         }
 
-        private void Storage1_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Storage1_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e) //When the item in the Drop box is selected initiate this code
         {
-            STORAGE SelectedSage1 = Storage1_DROP.SelectedItem as STORAGE;
-            int SagePrice;
-            int SageRating;
-            if (SelectedSage1 != null)
+            STORAGE SelectedSage1 = Storage1_DROP.SelectedItem as STORAGE;                  //Selecting the items that was selected in the drop box
+            int SagePrice;                                                                  //Current Storage 1 Price
+            int SageRating;                                                                 //Current Storage 1 Rating
+            if (SelectedSage1 != null)                                                      //If there is a selected Storage do the following code
             {
-                if (SelectionChangeCounterSTORAGE1 == 1)
+                if (SelectionChangeCounterSTORAGE1 == 1)                                    //If the counter is 1 ( meaning it has been changed before) run the following cod
                 {
-                    Price = Price - oldSTO1Price;
-                    Rating = Rating - oldSTO1Rating;
+                    Price = Price - oldSTO1Price;                                           //Take the prevously selected price from the overall Price
+                    Rating = Rating - oldSTO1Rating;                                        //Take the prevously selected Rating from the overall Rating
                 }
-                SelectionChangeCounterSTORAGE1 = 1;
-                var query6v2 = from b in db.STORAGEs
+                SelectionChangeCounterSTORAGE1 = 1;                                         //setting the counter to one indicating this code has been ran before
+                var query6v2 = from b in db.STORAGEs                                        //Getting the Rating from the selected Storage1 using its id in order to get the rating
                                where b.Id == SelectedSage1.Id
                                select b.STORAGERating;
-                SageRating = query6v2.First();
-                Rating = Rating + SageRating;
-                oldSTO1Rating = SageRating;
-                SageRating = 0;
+                SageRating = query6v2.First();                                              //Setting the Rating as an int in order to do calculations
+                Rating = Rating + SageRating;                                               //Adding the Rating to the overall Rating
+                oldSTO1Rating = SageRating;                                                 //Making a backup of the Rating in the event a user changes there mind
+                SageRating = 0;                                                             //Setting the Rating back to 0 in case the user changes there mind
 
-                var query6v3 = from b in db.STORAGEs
+                var query6v3 = from b in db.STORAGEs                                        //Getting the Price of the selected Storage1 using its id to get the Price
                                where b.Id == SelectedSage1.Id
                                select b.STORAGEPrice;
-                SagePrice = query6v3.First();
-                Price = Price + SagePrice;
-                oldSTO1Price = SagePrice;
-                SagePrice = 0;
+                SagePrice = query6v3.First();                                               //Setting the Price as an int in order to do calculations
+                Price = Price + SagePrice;                                                  //Adding the Price to the overall Rating
+                oldSTO1Price = SagePrice;                                                   //Making a backup of the Price in the event a user changes there mind
+                SagePrice = 0;                                                              //Setting the Price back to 0 in case the user changes there mind
             }
         }
 
-        private void Storage2_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Storage2_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e) //When the item in the Drop box is selected initiate this code
         {
-            STORAGE SelectedSage2 = Storage2_DROP.SelectedItem as STORAGE;
-            int SagePrice;
-            int SageRating;
-            if (SelectedSage2 != null)
+            STORAGE SelectedSage2 = Storage2_DROP.SelectedItem as STORAGE;                  //Selecting the items that was selected in the drop box
+            int SagePrice;                                                                  //Current Storage 2 Price
+            int SageRating;                                                                 //Current Storage 2 Rating
+            if (SelectedSage2 != null)                                                      //If there is a selected Storage do the following code
             {
-                if (SelectionChangeCounterSTORAGE2 == 1)
+                if (SelectionChangeCounterSTORAGE2 == 1)                                    //If the counter is 1 ( meaning it has been changed before) run the following cod
                 {
-                    Price = Price - oldSTO2Price;
-                    Rating = Rating - oldSTO2Rating;
+                    Price = Price - oldSTO2Price;                                           //Take the prevously selected price from the overall Price
+                    Rating = Rating - oldSTO2Rating;                                        //Take the prevously selected Rating from the overall Rating
                 }
-                SelectionChangeCounterSTORAGE2 = 1;
-                var query6v2 = from b in db.STORAGEs
+                SelectionChangeCounterSTORAGE2 = 1;                                         //setting the counter to one indicating this code has been ran before
+                var query6v2 = from b in db.STORAGEs                                        //Getting the Rating from the selected Storage2 using its id in order to get the rating
                                where b.Id == SelectedSage2.Id
                                select b.STORAGERating;
-                SageRating = query6v2.First();
-                Rating = Rating + SageRating;
-                oldSTO2Rating = SageRating;
-                SageRating = 0;
+                SageRating = query6v2.First();                                              //Setting the Rating as an int in order to do calculations
+                Rating = Rating + SageRating;                                               //Adding the Rating to the overall Rating
+                oldSTO2Rating = SageRating;                                                 //Making a backup of the Rating in the event a user changes there mind
+                SageRating = 0;                                                             //Setting the Rating back to 0 in case the user changes there mind
 
-                var query6v3 = from b in db.STORAGEs
+                var query6v3 = from b in db.STORAGEs                                        //Getting the Price of the selected Storage2 using its id to get the Price
                                where b.Id == SelectedSage2.Id
                                select b.STORAGEPrice;
-                SagePrice = query6v3.First();
-                Price = Price + SagePrice;
-                oldSTO2Price = SagePrice;
-                SagePrice = 0;
+                SagePrice = query6v3.First();                                               //Setting the Price as an int in order to do calculations
+                Price = Price + SagePrice;                                                  //Adding the Price to the overall Rating
+                oldSTO2Price = SagePrice;                                                   //Making a backup of the Price in the event a user changes there mind
+                SagePrice = 0;                                                              //Setting the Price back to 0 in case the user changes there mind
             }
         }
 
-        private void Storage3_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Storage3_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e) //When the item in the Drop box is selected initiate this code
         {
-            STORAGE SelectedSage3 = Storage3_DROP.SelectedItem as STORAGE;
-            int SageRating;
-            int SagePrice;
-            if (SelectedSage3 != null)
+            STORAGE SelectedSage3 = Storage3_DROP.SelectedItem as STORAGE;                  //Selecting the items that was selected in the drop box
+            int SageRating;                                                                 //Current Storage 3 Price
+            int SagePrice;                                                                  //Current Storage 3 Rating
+            if (SelectedSage3 != null)                                                      //If there is a selected Storage do the following code
             {
-                if (SelectionChangeCounterSTORAGE3 == 1)
+                if (SelectionChangeCounterSTORAGE3 == 1)                                    //If the counter is 1 ( meaning it has been changed before) run the following cod
                 {
-                    Price = Price - oldSTO3Price;
-                    Rating = Rating - oldSTO3Rating;
+                    Price = Price - oldSTO3Price;                                           //Take the prevously selected price from the overall Price
+                    Rating = Rating - oldSTO3Rating;                                        //Take the prevously selected Rating from the overall Rating
                 }
-                SelectionChangeCounterSTORAGE3 = 1;
-                var query6v2 = from b in db.STORAGEs
+                SelectionChangeCounterSTORAGE3 = 1;                                         //setting the counter to one indicating this code has been ran before
+                var query6v2 = from b in db.STORAGEs                                        //Getting the Rating from the selected Storage3 using its id in order to get the rating
                                where b.Id == SelectedSage3.Id
                                select b.STORAGERating;
-                SageRating = query6v2.First();
-                Rating = Rating + SageRating;
-                oldSTO3Rating = SageRating;
-                SageRating = 0;
+                SageRating = query6v2.First();                                              //Setting the Rating as an int in order to do calculations
+                Rating = Rating + SageRating;                                               //Adding the Rating to the overall Rating
+                oldSTO3Rating = SageRating;                                                 //Making a backup of the Rating in the event a user changes there mind
+                SageRating = 0;                                                             //Setting the Rating back to 0 in case the user changes there mind
 
-                var query6v3 = from b in db.STORAGEs
+                var query6v3 = from b in db.STORAGEs                                        //Getting the Price of the selected Storage3 using its id to get the Price
                                where b.Id == SelectedSage3.Id
                                select b.STORAGEPrice;
-                SagePrice = query6v3.First();
-                Price = Price + SagePrice;
-                oldSTO3Price = SagePrice;
-                SagePrice = 0;
+                SagePrice = query6v3.First();                                               //Setting the Price as an int in order to do calculations
+                Price = Price + SagePrice;                                                  //Adding the Price to the overall Rating
+                oldSTO3Price = SagePrice;                                                   //Making a backup of the Price in the event a user changes there mind
+                SagePrice = 0;                                                              //Setting the Price back to 0 in case the user changes there mind
             }
         }
 
-        private void PSU_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void PSU_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)  //When the item in the Drop box is selected initiate this code
         {
-            POWERSUPPLy SelectedPSU = PSU_DROP.SelectedItem as POWERSUPPLy;
-            int PSUPrice;
-            int PSURating;
-            if (SelectedPSU != null)
+            POWERSUPPLy SelectedPSU = PSU_DROP.SelectedItem as POWERSUPPLy;                 //Selecting the items that was selected in the drop box
+            int PSUPrice;                                                                   //Current Powersupply Price
+            int PSURating;                                                                  //Current Powersupply Rating
+            if (SelectedPSU != null)                                                        //If there is a selected PowerSupply do the following code
             {
-                if (SelectionChangeCounterPSU == 1)
+                if (SelectionChangeCounterPSU == 1)                                         //If the counter is 1 ( meaning it has been changed before) run the following cod
                 {
-                    Price = Price - oldPSUPrice;
-                    Rating = Rating - oldPSURating;
+                    Price = Price - oldPSUPrice;                                            //Take the prevously selected price from the overall Price
+                    Rating = Rating - oldPSURating;                                         //Take the prevously selected Rating from the overall Rating
                 }
-                SelectionChangeCounterPSU = 1;
-                var query7v2 = from b in db.POWERSUPPLies
+                SelectionChangeCounterPSU = 1;                                              //setting the counter to one indicating this code has been ran before
+                var query7v2 = from b in db.POWERSUPPLies                                   //Getting the Rating from the selected PowerSupply using its id in order to get the rating
                                where b.Id == SelectedPSU.Id
                                select b.POWERSUPPLYRating;
-                PSURating = query7v2.First();
-                Rating = Rating + PSURating;
-                oldPSURating = PSURating;
-                PSURating = 0;
+                PSURating = query7v2.First();                                               //Setting the Rating as an int in order to do calculations
+                Rating = Rating + PSURating;                                                //Adding the Rating to the overall Rating
+                oldPSURating = PSURating;                                                   //Making a backup of the Rating in the event a user changes there mind
+                PSURating = 0;                                                              //Setting the Rating back to 0 in case the user changes there mind
 
-                var query7v3 = from b in db.POWERSUPPLies
+                var query7v3 = from b in db.POWERSUPPLies                                   //Getting the Price of the selected PowerSupply using its id to get the Price
                                where b.Id == SelectedPSU.Id
                                select b.POWERSUPPLYPrice;
-                PSUPrice = query7v3.First();
-                Price = Price + PSUPrice;
-                oldPSUPrice = PSUPrice;
-                PSUPrice = 0;
+                PSUPrice = query7v3.First();                                                //Setting the Price as an int in order to do calculations
+                Price = Price + PSUPrice;                                                   //Adding the Price to the overall Rating
+                oldPSUPrice = PSUPrice;                                                     //Making a backup of the Price in the event a user changes there mind
+                PSUPrice = 0;                                                               //Setting the Price back to 0 in case the user changes there mind
             }
         }
 
-        private void OptionalFans_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void OptionalFans_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e) //When the item in the Drop box is selected initiate this code
         {
-            OPTIONAL SelectedFan = OptionalFans_DROP.SelectedItem as OPTIONAL;
-            int FanRating;
-            int FanPrice;
-            if (SelectedFan != null)
+            OPTIONAL SelectedFan = OptionalFans_DROP.SelectedItem as OPTIONAL;              //Selecting the items that was selected in the drop box
+            int FanRating;                                                                  //Current Fan Rating
+            int FanPrice;                                                                   //Current Fan Price
+            if (SelectedFan != null)                                                        //If there is a selected Fan do the following code
             {
-                if (SelectionChangeCounterOPTIONALFAN == 1)
+                if (SelectionChangeCounterOPTIONALFAN == 1)                                 //If the counter is 1 ( meaning it has been changed before) run the following cod
                 {
-                    Price = Price - oldOP1Price;
-                    Rating = Rating - oldOP1Rating;
+                    Price = Price - oldOP1Price;                                            //Take the prevously selected price from the overall Price
+                    Rating = Rating - oldOP1Rating;                                         //Take the prevously selected Rating from the overall Rating
                 }
-                SelectionChangeCounterOPTIONALFAN = 1;
-                var query9v2 = from b in db.OPTIONALs
+                SelectionChangeCounterOPTIONALFAN = 1;                                      //setting the counter to one indicating this code has been ran before
+                var query9v2 = from b in db.OPTIONALs                                       //Getting the Rating from the selected FAN using its id in order to get the rating
                                where b.Id == SelectedFan.Id
                                select b.OPTIONALRating;
-                FanRating = query9v2.First();
-                Rating = Rating + FanRating;
-                oldOP1Rating = FanRating;
-                FanRating = 0;
+                FanRating = query9v2.First();                                               //Setting the Rating as an int in order to do calculations
+                Rating = Rating + FanRating;                                                //Adding the Rating to the overall Rating
+                oldOP1Rating = FanRating;                                                   //Making a backup of the Rating in the event a user changes there mind
+                FanRating = 0;                                                              //Setting the Rating back to 0 in case the user changes there mind
 
-                var query9v3 = from b in db.OPTIONALs
+                var query9v3 = from b in db.OPTIONALs                                       //Getting the Price of the selected FAN using its id to get the Price
                                where b.Id == SelectedFan.Id
                                select b.OPTIONALPrice;
-                FanPrice = query9v3.First();
-                Price = Price + FanPrice;
-                oldOP1Price = FanPrice;
-                FanPrice = 0;
+                FanPrice = query9v3.First();                                                //Setting the Price as an int in order to do calculations
+                Price = Price + FanPrice;                                                   //Adding the Price to the overall Rating
+                oldOP1Price = FanPrice;                                                     //Making a backup of the Price in the event a user changes there mind
+                FanPrice = 0;                                                               //Setting the Price back to 0 in case the user changes there mind
             }
         }
 
-        private void OptionalLED_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void OptionalLED_DROP_SelectionChanged(object sender, SelectionChangedEventArgs e)  //When the item in the Drop box is selected initiate this code
         {
-            OPTIONAL SelectedLED = OptionalLED_DROP.SelectedItem as OPTIONAL;
-            int LEDPrice;
-            int LEDRating;
-            if (SelectedLED != null)
+            OPTIONAL SelectedLED = OptionalLED_DROP.SelectedItem as OPTIONAL;               //Selecting the items that was selected in the drop box
+            int LEDPrice;                                                                   //Current LED Price
+            int LEDRating;                                                                  //Current LED Rating
+            if (SelectedLED != null)                                                        //If there is a selected LED do the following code
             {
-                if (SelectionChangeCounterOPTIONALLED == 1)
+                if (SelectionChangeCounterOPTIONALLED == 1)                                 //If the counter is 1 ( meaning it has been changed before) run the following cod
                 {
-                    Price = Price - oldOP2Price;
-                    Rating = Rating - oldOP2Rating;
+                    Price = Price - oldOP2Price;                                            //Take the prevously selected price from the overall Price
+                    Rating = Rating - oldOP2Rating;                                         //Take the prevously selected Rating from the overall Rating
                 }
-                SelectionChangeCounterOPTIONALLED = 1;
-                var query9v2 = from b in db.OPTIONALs
+                SelectionChangeCounterOPTIONALLED = 1;                                      //setting the counter to one indicating this code has been ran before
+                var query9v2 = from b in db.OPTIONALs                                       //Getting the Rating from the selected LED using its id in order to get the rating
                                where b.Id == SelectedLED.Id
                                select b.OPTIONALRating;
-                LEDRating = query9v2.First();
-                Rating = Rating + LEDRating;
-                oldOP2Rating = LEDRating;
-                LEDRating = 0;
+                LEDRating = query9v2.First();                                               //Setting the Rating as an int in order to do calculations
+                Rating = Rating + LEDRating;                                                //Adding the Rating to the overall Rating
+                oldOP2Rating = LEDRating;                                                   //Making a backup of the Rating in the event a user changes there mind
+                LEDRating = 0;                                                              //Setting the Rating back to 0 in case the user changes there mind
 
-                var query9v3 = from b in db.OPTIONALs
+                var query9v3 = from b in db.OPTIONALs                                       //Getting the Price of the selected LED using its id to get the Price
                                where b.Id == SelectedLED.Id
                                select b.OPTIONALPrice;
-                LEDPrice = query9v3.First();
-                Price = Price + LEDPrice;
-                oldOP2Price = LEDPrice;
-                LEDPrice = 0;
+                LEDPrice = query9v3.First();                                                //Setting the Price as an int in order to do calculations
+                Price = Price + LEDPrice;                                                   //Adding the Price to the overall Rating
+                oldOP2Price = LEDPrice;                                                     //Making a backup of the Price in the event a user changes there mind
+                LEDPrice = 0;                                                               //Setting the Price back to 0 in case the user changes there mind
             }
         }
 
-        private void BuildRatingTBLK_Loaded(object sender, RoutedEventArgs e)
+        private void BuildRatingTBLK_Loaded(object sender, RoutedEventArgs e)               //When the Text block is loaded this code runs
         {
-            double FinalRating = ((double)Rating / 115) * 100;
-            double TrimmedRating = Math.Round(FinalRating);
-            string RatingS = Convert.ToString(TrimmedRating);
-            BuildRatingTBLK.Text = " " + RatingS + "/100";
+            double FinalRating = ((double)Rating / 115) * 100;                              //Doing the calculations to make the rating out of 100
+            double TrimmedRating = Math.Round(FinalRating);                                 //Rounding the final rating to the nearest whole number
+            string RatingS = Convert.ToString(TrimmedRating);                               //Converting the rounded off final rating to a string
+            BuildRatingTBLK.Text = " " + RatingS + "/100";                                  //Setting the text block to show the final rating
         }
 
-        private void TextBlock_Loaded(object sender, RoutedEventArgs e)
+        private void TextBlock_Loaded(object sender, RoutedEventArgs e)                     //When the Text block is loaded this code runs
         {
-            int MaxPrice = Price + 200;
-            MaxPriceTBLK.Text = Convert.ToString(MaxPrice);
+            int MaxPrice = Price + 200;                                                     //Add 200 to the orignal price to make suer user doesnt over spend on pc parts 
+            MaxPriceTBLK.Text = Convert.ToString(MaxPrice);                                 //Converting the max price too string and setting it as the text on the Max price text block
         }
     }
 }
